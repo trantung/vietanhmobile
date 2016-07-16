@@ -12,7 +12,7 @@ class SlideTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('images', function(Blueprint $table) {
+		Schema::create('slide', function(Blueprint $table) {
             $table->increments('id');
             $table->string('image_link', 256)->nullable();
             $table->string('name', 256)->nullable();
@@ -30,7 +30,7 @@ class SlideTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('images');
+		Schema::drop('slide');
 	}
 
 }
