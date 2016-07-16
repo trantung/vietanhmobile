@@ -7,40 +7,6 @@
 				<div></div>
 			</div>
 		</div>
-		<div class="hh-top-nav">
-			<div class="hh-top-nav-ctn main-width">
-				<div class="left">
-					<ul class="hh-top-nav-iconlink">
-						<li><a target="_top"><i class="fa fa-Mạng xã hội"></i></a></li>
-						<li><a href="https://www.facebook.com/hoanghamobilecom" target="_blank"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="https://twitter.com/tuan091291" target="_blank"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="https://plus.google.com/115378756871018292293/about" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="https://www.youtube.com/channel/UCJm_GdFJzT8h1odq1oMu_7Q" target="_blank"><i class="fa fa-youtube"></i></a></li>
-						<li><a target="_top"><i class="fa fa-rss"></i></a></li>
-					</ul>
-				</div>
-				<div class="right">
-					<ul class="hh-top-nav-quicklink">
-						<li><a href="https://hoanghamobile.com/so-sanh.html" target="_top">So sánh sản phẩm</a></li>
-						<li>|</li>
-						<li><a href="https://hoanghamobile.com/giam-gia-soc-c2153.html" target="_top">Giảm Giá Sốc</a></li>
-						<li>|</li>
-						<li><a href="https://hoanghamobile.com/tin-tuc" target="_top">Tin tức</a></li>
-						<li>|</li>
-						<li><a href="https://hoanghamobile.com/tuyen-dung" target="_top">Tuyển dụng</a></li>
-						<li>|</li>
-						<li><a href="https://hoanghamobile.com/gioi-thieu" target="_top">Giới thiệu</a></li>
-						<li>|</li>
-						<li><a href="https://hoanghamobile.com/bao-gia" target="_top">Báo giá</a></li>
-						<li>|</li>
-						<li><a href="https://hoanghamobile.com/lien-he" target="_top">Liên hệ</a></li>
-						<li>|</li>
-						<li class="desktopView"><a href="https://hoanghamobile.com/home/mobileswitch/?mobile=true"><i class="fa fa-mobile"></i> P.Bản Mobile</a></li>
-						<li>|</li>
-					</ul>
-				</div>
-			</div>
-		</div>
 		<div class="header clearFix">
 			<div class="main-width">
 				<div class="logo"><a href="https://hoanghamobile.com/"><img src="./image/logo.jpg" alt="Điện thoại di động giá rẻ nhất - Siêu thị điện thoại Hoàng Hà Mobile"></a></div>
@@ -53,18 +19,9 @@
 								<button type="submit"><i class="fa fa-search"></i> Tìm kiếm</button>
 							</form>
 						</div>
-						<div class="tags"><strong>Từ khóa:</strong> <a href="#">iphone 6s</a> <a href="#">Oppo Neo 7</a></div>
 					</div>
 					<div class="tools-member">
-						<div class="member">
-							<p><span>Xin chào:</span> <a href="javascript:;" class="btn-login">Đăng nhập</a></p>
-							<p><a href="#" class="black"><i class="fa fa-user"></i> <strong>Đăng ký tài khoản</strong></a></p>
-						</div>
-						<div class="cart btn-your-cart">
-							<div class="cart-number"><span class="cartNumber">0</span></div>
-							<p class="cart-info"><a class="black" href="javascript:;"><strong>Giỏ hàng</strong></a></p>
-						</div>
-						<div class="check-order"><a href="javascript:;" class="button btn-check-order" style="background:red;color:#fff"><i class="fa fa-truck"></i> <span>Kiểm tra đơn hàng</span></a></div>
+						
 					</div>
 				</div>
 			</div>
