@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminTable extends Migration {
+class TypeTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,10 @@ class CreateAdminTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('admins', function(Blueprint $table) {
+		Schema::create('types', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('parent_id');
-            $table->string('email', 256)->nullable();
-            $table->string('password', 256)->nullable();
-            $table->string('username', 256)->nullable();
-            $table->string('remember_token', 256)->nullable();
+            $table->string('name', 256)->nullable();
+            $table->string('weight_number', 256)->nullable();
             $table->integer('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
@@ -32,7 +29,7 @@ class CreateAdminTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('admins');
+		Schema::drop('types');
 	}
 
 }

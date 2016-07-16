@@ -15,7 +15,4 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/propose', 'ProposeSalaryListController');
 
 });
-Route::group(['prefix' => 'admin'], function () {
-	Route::resource('/propose', 'ProposeSalaryListController');
-
-});
+Route::resource('/', 'SiteController');
