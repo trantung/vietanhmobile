@@ -9,7 +9,7 @@ class SiteController extends BaseController {
 	 */
 	public function index()
 	{
-		dd(11);
+		return View::make('fromtend.index');
 	}
 
 
