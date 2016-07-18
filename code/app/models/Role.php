@@ -1,34 +1,18 @@
 <?php
 
-use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class Role extends Eloquent implements UserInterface, RemindableInterface {
-
-	use UserTrait, RemindableTrait;
+class Role extends Eloquent
+{
 	use SoftDeletingTrait;
-
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'roles';
-
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $fillable = array('name', 'status');
+    protected $table = 'roles';
+    protected $fillable = ['name', 'description'];
     protected $dates = ['deleted_at'];
 
-	public function users()
-	{
-		return $this->hasMany('User', 'role_id', 'id');
-	}
-
+    public function admins()
+    {
+        return $this->hasMany('Admin', 'role_id', 'id');
+    }
 }

@@ -1,21 +1,9 @@
 <?php
-Validator::extend('checkbox', function($attribute, $value, $parameters)
+Validator::extend('unique_delete', function($attribute, $value, $parameters)
 {
-	dd($value);
-});
-Validator::extend('salary', function($attribute, $value, $parameters)
-{
-	$user = User::find($value);
-	if ($user->salary_id) {
+	if (Admin::where('username', $value)->first()) {
 		return false;
 	}
 	return true;
 });
-Validator::extend('addFuntion', function($attribute, $value, $parameters)
-{
-	$buttonFuntion = ButtonFunction::find($value);
-	if ($buttonFuntion->name) {
-		return false;
-	}
-	return true;
-});
+

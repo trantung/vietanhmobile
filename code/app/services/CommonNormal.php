@@ -23,54 +23,42 @@ class CommonNormal
 		$id = $name::create($input)->id;
 		return $id;
 	}
+
 	public static function commonName($name = NULL)
 	{
 		if ($name == NULL) {
 			$name = Request::segment(2);
 		}
+		if ($name == '') {
+			return 'AdminNew';
+		}
+		if($name =='news'){
+			return 'AdminNew';
+		}
+		if($name =='newstype'){
+			return 'TypeNew';
+		}
 		if ($name == 'manager') {
 			return 'Admin';
 		}
-		if ($name == 'management') {
-			return 'User';
+		if ($name == 'introduce') {
+			return 'Introduce';
 		}
-		if($name == 'regency') {
-			return 'Regency';
+		if ($name == 'bottomtext') {
+			return 'BottomText';
 		}
-		if($name == 'resouce') {
-			return 'Resouce';
+		if ($name == 'contact') {
+			return 'Contact';
 		}
-		if($name == 'deparment') {
-			return 'Department';
+		if ($name == 'slider') {
+			return 'AdminSlide';
 		}
-		// if($name == 'depFunction') {
-		// 	return 'DepRegencyPerFun';	
-		// }
-		if($name == 'tempRole') {
-			return 'TempRole';
+		if ($name == 'type_about_us') {
+			return 'TypeAboutUs';
 		}
-		if($name == 'project') {
-			return 'Project';
+		if ($name == 'about_us_company') {
+			return 'AboutUs';
 		}
-		if($name == 'projectStatus') {
-			return 'ProjectStatus';
-		}
-		if($name == 'task') {
-			return 'Task';
-		}
-		if($name == 'user_type') {
-			return 'TypeUser';
-		}
-		if($name == 'salary')
-			return 'SalaryUser';
-		if($name == 'taskStatus')
-		{
-			return 'TaskStatus';
-		}
-		if($name == 'storeAll')
-		{
-			return 'storeAll';
-		}
-	}
 
+	}
 }

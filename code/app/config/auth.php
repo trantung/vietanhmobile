@@ -1,24 +1,26 @@
 <?php
 
 return array(
-	'multi' => array(
-		'admin' => array(
-			'driver' => 'eloquent',
-			'model' => 'Admin'
-		),
-		'user' => array(
-			'driver' => 'database',
-			'table' => 'users'
-		)
-	),
-	'reminder' => array(
 
-		'email' => 'emails.auth.reminder',
+    'multi' => array(
+        'admin' => array(
+            'driver' => 'eloquent',
+            'model' => 'Admin'
+        ),
+        'user' => array(
+            'driver' => 'database',
+            'table' => 'users'
+        )
+    ),
 
-		'table' => 'password_reminders',
+    'reminder' => array(
 
-		'expire' => 60,
+        'email' => 'emails.auth.reminder',
 
-	),
+        'table' => 'password_reminders',
+
+        'expire' => 60,
+
+    ),
 
 );

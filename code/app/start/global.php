@@ -15,13 +15,13 @@ ClassLoader::addDirectories(array(
 
 	app_path().'/commands',
 	app_path().'/controllers',
+	app_path().'/controllers/admin',
+	app_path().'/controllers/site',
 	app_path().'/models',
 	app_path().'/database/seeds',
-	app_path().'/controllers/admin',
-	app_path().'/controllers/frontend',
 	app_path().'/services',
     app_path().'/helpers',
-    
+
 ));
 
 /*
@@ -84,4 +84,3 @@ App::down(function()
 
 require app_path().'/filters.php';
 require app_path().'/validator.php';
-

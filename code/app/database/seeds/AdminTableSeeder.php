@@ -5,20 +5,11 @@ class AdminTableSeeder extends Seeder {
 	public function run()
 	{
 		Admin::create([
-				'email'=>'tuancuong@gmail.com',
-				'password'=>Hash::make('123456'),
-				'username'=> 'tuancuong',
-				'status'=> '1',
-				'role_id'=> '1',
-			]);
-		Admin::create([
+				'role_id' => 1,
 				'email'=>'trantunghn196@gmail.com',
 				'password'=>Hash::make('123456'),
-				'username'=> 'trantung',
-				'status'=> '1',
-				'role_id'=> '1',
+				'username'=> 'tung1984',
 			]);
-
 	}
 
 }

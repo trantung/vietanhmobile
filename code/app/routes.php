@@ -12,7 +12,37 @@
 */
 
 Route::group(['prefix' => 'admin'], function () {
-	Route::resource('/propose', 'ProposeSalaryListController');
+	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
+	Route::post('/login', array('uses' => 'AdminController@doLogin'));
+	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
+	Route::resource('/', 'AdminController');
+
+	Route::get('/manager/changepassword/{id}', array('uses' => 'ManagerController@changePassword', 'as' => 'admin.manager.chanpassword'));
+	Route::post('/manager/updatePassword/{id}', array('uses' => 'ManagerController@updatePassword'));
+	Route::get('/manager/search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
+	Route::resource('/manager', 'ManagerController');
+
+	Route::get('/feedback', 'AdminContactController@feedback');
+
+	Route::resource('/contact', 'AdminContactController');
+
+	Route::resource('/bottomtext', 'BottomTextController');
+
+	Route::resource('/newstype', 'NewsTypeController');
+
+	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
+	Route::resource('/news', 'NewsController');
+	Route::resource('/products', 'AdminProductController');
+	Route::resource('/category', 'AdminCategoryController');
+
+	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
+	Route::get('/slider/search', array('uses' => 'AdminSlideController@search', 'as' => 'admin.slide.search'));
+	Route::resource('/slider', 'AdminSlideController');
+
+	Route::resource('/des_content', 'DesContentController');
+	Route::resource('/introduce', 'AdminIntroduceController');
+	Route::resource('/about_us_company', 'AdminAboutUsController');
+	Route::resource('/type_about_us', 'AdminTypeAboutController');
 
 });
 Route::resource('/', 'SiteController');
