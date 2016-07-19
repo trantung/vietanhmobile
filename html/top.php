@@ -26,6 +26,6 @@
 </div>
 
 <?php 
-	include('menu.php');
-	include('slide.php') 
+	// include('menu.php');
+	// include('slide.php') 
 ?>

@@ -15,4 +15,5 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/propose', 'ProposeSalaryListController');
 
 });
+Route::get('/{id}',  'SiteController@show');
 Route::resource('/', 'SiteController');

@@ -3,7 +3,7 @@
 		<div class="nav">
 			<nav class="all-nav">
 				<div class="root-nav"><a href="javascript:;" class="root actived"><i class="fa fa-bars"></i> <span>Danh mục sản phẩm</span></a></div>
-				<div class="nav-items" style="display: block;">
+				<div class="nav-items" style="display: none;">
 					<ul>
 						<li data-submenu-id="menu_5">
 							<div class="border">
@@ -144,7 +144,7 @@
 									</ul>
 									<div class="ads">
 										<a href="https://hoanghamobile.com/dien-thoai-di-dong-c14.html" target="_top">
-											<img src="./image/201605241621213907_IP6-08.png" alt="">
+											<img src="assets/image/201605241621213907_IP6-08.png" alt="">
 										</a>
 									</div>
 								</div>

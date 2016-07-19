@@ -1,6 +1,7 @@
 @include('fromtend.common.header');
 @include('fromtend.common.top');
-
+@include('fromtend.common.menu');
+@include('fromtend.common.slide');
 		<div class="content">
 			<div class="main-width">
 				<div class="main-home">
@@ -79,7 +80,7 @@
 											<div class="hh-label hh-label-topright"><span class="label label-success">-18%</span></div>
 											<div class="hh-label hh-label-right"><span class="label label-danger">HOT</span></div>
 											<div class="mosaic-block">
-												<a href="https://hoanghamobile.com/samsung-galaxy-a8-chinh-hang-p4715.html" class="mosaic-overlay" style="display: inline; opacity: 0;">
+												<a href="{{ action('SiteController@show', '1') }}" class="mosaic-overlay" style="display: inline; opacity: 0;">
 													<div class="details">
 														<ul>
 															<li>Bảo hành: Chính hãng 12 tháng, Bao xài - đổi trả trong 15 ngày đầu</li>
@@ -91,7 +92,7 @@
 												<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy A8 - Chính hãng" height="170" src="assets/image/201606231641529374_samsung-galaxy-a8-a800.jpg"></div>
 											</div>
 											<div class="product-name">
-												<h4><a href="https://hoanghamobile.com/samsung-galaxy-a8-chinh-hang-p4715.html">Samsung Galaxy A8 - Chính hãng</a></h4>
+												<h4><a href="{{ action('SiteController@show', '1') }}">Samsung Galaxy A8 - Chính hãng</a></h4>
 											</div>
 										</div>
 										<div class="product-price"><strike>9.090.000 ₫</strike> 7.490.000 ₫</div>

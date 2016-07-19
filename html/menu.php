@@ -3,7 +3,7 @@
 		<div class="nav">
 			<nav class="all-nav">
 				<div class="root-nav"><a href="javascript:;" class="root actived"><i class="fa fa-bars"></i> <span>Danh mục sản phẩm</span></a></div>
-				<div class="nav-items" style="display: block;">
+				<div class="nav-items" style="display: none;">
 					<ul>
 						<li data-submenu-id="menu_5">
 							<div class="border">

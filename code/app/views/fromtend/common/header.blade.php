@@ -8,7 +8,7 @@
 		<meta property="og:title" content="Điện thoại di động gía rẻ nhất - Siêu thị điện thoại Hoàng Hà Mobile">
 		<meta name="description" property="og:description" content="Điện thoại di động gía rẻ nhất - Siêu thị điện thoại Hoàng Hà Mobile">
 		<link href="assets/css/hoanghamobilev2.css" rel="stylesheet">
-		<script src="assets/js/cb=gapi.loaded_0" async></script>
+		<!-- <script src="assets/js/cb=gapi.loaded_0" async></script> -->
 		<script async src="assets/js/fbevents.js"></script>
 		<script type="text/javascript" async src="assets/js/conversion_async.js"></script>
 		<script type="text/javascript" async src="assets/js/conversion_async.js"></script>

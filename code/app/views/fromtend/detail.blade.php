@@ -1,21 +1,19 @@
-<?php
-include('header.php');
-include('top.php');
-include('menu.php');
-
-?>
+@include('fromtend.common.header');
+@include('fromtend.common.top');
+@include('fromtend.common.menu');
+@include('fromtend.common.slide');
 <div class="content">
 	<div class="main-width">
 		<section class="product-details">
 			<div class="head">
 				<div class="left">
-					<h1 itemprop="name">Điện thoại <strong>Samsung Galaxy S7 - G930FD - Chính hãng</strong></h1>
+					<h1 itemprop="name"><strong>{{$data->name}}</strong></h1>
 				</div>
 			</div>
 			<div class="head-content">
 				<div class="left">
 					<div id="slider1_container" style="position:relative;width:720px;height:500px;overflow:hidden" jssor-slider="true">
-						<img src="./image/anh1.jpg"/>
+						<img src="assets/image/anh1.jpg"/>
 					</div>
 				</div>
 				<div class="right" style="background-color: #FFFFCC;">
@@ -43,7 +41,7 @@ include('menu.php');
 					<div class="hh-block-clear">
 						<div class="hh-block-price">
 							<div class="label"><p>Giá:</p></div>
-							<div class="data"><div class="product-price"><p><span itemprop="price">15.990.000 ₫</span></p></div>
+							<div class="data"><div class="product-price"><p><span itemprop="price">{{$data->price }} ₫</span></p></div>
 							<div class="note"></div>
 							<div class="priceNote"><p>Sản phẩm được tặng 1.700.000 vnđ tiền mặt</p></div></div>
 						</div>
@@ -76,7 +74,7 @@ include('menu.php');
 							</h3>
 							<div class="hh-container">
 								<div class="video-player" id="videoPlayer">
-									<iframe width="480" height="270" src="//www.youtube.com/embed/G957bRjDhf4" frameborder="0" allowfullscreen=""></iframe>
+									<iframe width="480" height="270" src="{{ $data->link_youtube}}" frameborder="0" allowfullscreen=""></iframe>
 								</div>
 							</div>
 						</div>
@@ -151,23 +149,7 @@ include('menu.php');
 				</div>
 				<div class="right">
 					<div class="simple-prop">
-					Giao hàng toàn quốc: Nhận hàng và trả tiền tại nhà.
-					Áp dụng chính thức: từ 12/12/2015.
-					 
-					Ngocmobile.vn kết hợp với Công ty cổ phần dịch vụ Giao Hàng Nhanh (đã có mặt trên đủ các tỉnh thành) để cung cấp dịch vụ mua hàng và thanh toán tại nhà miễn phí.
-					Khách hàng ở xa có thể mua hàng bằng các đặt hàng trên website hoặc liên hệ với nhân viên qua số ĐT 096.455.3333 gặp anh Huỳnh (28 tuổi)
-					Lưu ý:
-					- Khách hàng vui lòng cung cấp đầy đủ thông tin về sản phẩm đặt mua và địa chỉ giao hàng chi tiết.
-					- Kiểm tra hàng hoá và kí nhận đã nhận đủ hàng trước khi thanh toán. Trường hợp sản phẩm lỗi về hình thức sẽ không được áp dụng chế độ đổi trả trong 10 ngày đầu.
-					- Nếu có nhu cầu xuất hoá đơn, vui lòng thông tin trước cho bộ phận đặt hàng trước khi chuyển hàng.
-					- Không áp dụng đối với phụ kiện: Bao da, ốp lưng dưới 200.000đ hoặc miếng dán màn hình.
-					- Khách hàng có nhu cầu gửi hàng qua xe khách, vui lòng chuyển khoản thanh toán trước và báo nhân viên thông tin nhà xe để gửi hàng. Với các mất mát, hư hỏng của sản phẩm trong quá trình gửi xe, Ngocmobile.vn  không đảm bảo và không chịu trách nhiệm đền bù.
-					- Khi chuyển khoản khách hàng vui lòng liên hệ nhân viên tổng đài để xác nhận.
-					Quy định về đổi trả hàng
-					- Đối với khách mua hàng online, thời hạn đổi máy không bao gồm thời gian vận chuyển.
-					- Trường hợp đổi trả 10 ngày đầu do máy lỗi, Ngocmobile.vn sẽ chịu hoàn toàn chi phí vận chuyển.
-					- Khách hàng gửi máy đổi trả vui lòng đóng gói hàng hoá cẩn thận hoặc liên hệ 096.455.3333
-					* Lưu ý: Đơn hàng thành công khi nhân viên gọi điện xác nhận.
+						{{ $data->description }}
 					</div>
 				</div>
 			</div>
@@ -195,7 +177,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy A8 - Chính hãng" height="170" src="./image/201606231641529374_samsung-galaxy-a8-a800.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy A8 - Chính hãng" height="170" src="assets/image/201606231641529374_samsung-galaxy-a8-a800.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/samsung-galaxy-a8-chinh-hang-p4715.html">Samsung Galaxy A8 - Chính hãng</a></h4>
@@ -216,7 +198,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Xiaomi Mi 4 - White - 16GB - Ram 2GB" height="170" src="./image/201607051020487236_Xiaomi-Mi4.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Xiaomi Mi 4 - White - 16GB - Ram 2GB" height="170" src="assets/image/201607051020487236_Xiaomi-Mi4.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/xiaomi-mi-4-white-16gb-ram-2gb-p4625.html">Xiaomi Mi 4 - White - 16GB - Ram 2GB</a></h4>
@@ -239,7 +221,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy J7 - Chính hãng" height="170" src="./image/201508011037345979_samsung-galaxy-j5-org-1.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy J7 - Chính hãng" height="170" src="assets/image/201508011037345979_samsung-galaxy-j5-org-1.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/samsung-galaxy-j7-chinh-hang-p4786.html">Samsung Galaxy J7 - Chính hãng</a></h4>
@@ -260,7 +242,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Xiaomi Redmi Note 3 Pro - RAM 2GB - Black/White/Gold" height="170" src="./image/201607051030543198_redmi-note3-gray_2.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Xiaomi Redmi Note 3 Pro - RAM 2GB - Black/White/Gold" height="170" src="assets/image/201607051030543198_redmi-note3-gray_2.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/xiaomi-redmi-note-3-pro-ram-2gb-blackwhitegold-p5491.html">Xiaomi Redmi Note 3 Pro - RAM 2GB - Black/White/Gold</a></h4>
@@ -282,7 +264,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S - 16GB - Space Gray/White/Gold/Rose Gold" height="170" src="./image/201603211015391056_iPhone 6s.png"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S - 16GB - Space Gray/White/Gold/Rose Gold" height="170" src="assets/image/201603211015391056_iPhone 6s.png"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/apple-iphone-6s-16gb-space-graywhitegoldrose-gold-p5021.html">Apple iPhone 6S - 16GB - Space Gray/White/Gold/Rose Gold</a></h4>
@@ -306,7 +288,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S - 16GB - Space Gray/White/Gold/Rose Gold - Chính hãng FPT, DGW" height="170" src="./image/201511051709304652_iphone 6s fpt.png"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S - 16GB - Space Gray/White/Gold/Rose Gold - Chính hãng FPT, DGW" height="170" src="assets/image/201511051709304652_iphone 6s fpt.png"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/apple-iphone-6s-16gb-space-graywhitegoldrose-gold-chinh-hang-fpt-dgw-p4966.html">Apple iPhone 6S - 16GB - Space Gray/White/Gold/Rose Gold - Chính hãng FPT, DGW</a></h4>
@@ -329,7 +311,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Sky Vega iron 2 - A910s - Chính hãng" height="170" src="./image/201508171544111103_thegioisky-1400643189 copy.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Sky Vega iron 2 - A910s - Chính hãng" height="170" src="assets/image/201508171544111103_thegioisky-1400643189 copy.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/sky-vega-iron-2-a910s-chinh-hang-p1652.html">Sky Vega iron 2 - A910s - Chính hãng</a></h4>
@@ -351,7 +333,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy S7 - G930FD - Chính hãng" height="170" src="./image/201605071740067571_S7 S7 EDGE-01.png"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy S7 - G930FD - Chính hãng" height="170" src="assets/image/201605071740067571_S7 S7 EDGE-01.png"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/samsung-galaxy-s7-g930fd-chinh-hang-p5475.html">Samsung Galaxy S7 - G930FD - Chính hãng</a></h4>
@@ -374,7 +356,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy S6 Edge G925 - Gold - 32GB - Chính hãng" height="170" src="./image/201607151536055238_Samsung Galaxy S6 Edge Gold.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy S6 Edge G925 - Gold - 32GB - Chính hãng" height="170" src="assets/image/201607151536055238_Samsung Galaxy S6 Edge Gold.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/samsung-galaxy-s6-edge-g925-gold-32gb-chinh-hang-p2836.html">Samsung Galaxy S6 Edge G925 - Gold - 32GB - Chính hãng</a></h4>
@@ -396,7 +378,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S - 64GB  - Space Gray/White/Gold/Rose Gold" height="170" src="./image/201603211015391056_iPhone 6s.png"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S - 64GB  - Space Gray/White/Gold/Rose Gold" height="170" src="assets/image/201603211015391056_iPhone 6s.png"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/apple-iphone-6s-64gb-space-graywhitegoldrose-gold-p5022.html">Apple iPhone 6S - 64GB - Space Gray/White/Gold/Rose Gold</a></h4>
@@ -420,7 +402,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy S7 Edge - G935FD - Chính hãng" height="170" src="./image/201605071741101197_S7 S7 EDGE-01.png"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy S7 Edge - G935FD - Chính hãng" height="170" src="assets/image/201605071741101197_S7 S7 EDGE-01.png"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/samsung-galaxy-s7-edge-g935fd-chinh-hang-p5476.html">Samsung Galaxy S7 Edge - G935FD - Chính hãng</a></h4>
@@ -442,7 +424,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="HTC One E9 Dual SIM - Chính hãng" height="170" src="./image/201607091549386607_htc-one-e9-dual-sim.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="HTC One E9 Dual SIM - Chính hãng" height="170" src="assets/image/201607091549386607_htc-one-e9-dual-sim.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/htc-one-e9-dual-sim-chinh-hang-p4943.html">HTC One E9 Dual SIM - Chính hãng</a></h4>
@@ -465,7 +447,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6 4.7&quot; - 64GB - Black/White/Gold - Chính hãng - FPT, DGW" height="170" src="./image/201507241058044511_201504141102061618_iphone6.png"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6 4.7&quot; - 64GB - Black/White/Gold - Chính hãng - FPT, DGW" height="170" src="assets/image/201507241058044511_201504141102061618_iphone6.png"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/apple-iphone-6-47-64gb-blackwhitegold-chinh-hang-fpt-dgw-p1735.html">Apple iPhone 6 4.7" - 64GB - Black/White/Gold - Chính hãng - FPT, DGW</a></h4>
@@ -487,7 +469,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S Plus - 64GB - Space Gray/White/Gold/Rose Gold" height="170" src="./image/201603211015391046_iPhone 6s Plus.png"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S Plus - 64GB - Space Gray/White/Gold/Rose Gold" height="170" src="assets/image/201603211015391046_iPhone 6s Plus.png"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/apple-iphone-6s-plus-64gb-space-graywhitegoldrose-gold-p5047.html">Apple iPhone 6S Plus - 64GB - Space Gray/White/Gold/Rose Gold</a></h4>
@@ -510,7 +492,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy S6 Edge Plus - 32GB - Chính hãng" height="170" src="./image/201607091334032426_635854264670767033_s6e-g1.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy S6 Edge Plus - 32GB - Chính hãng" height="170" src="assets/image/201607091334032426_635854264670767033_s6e-g1.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/samsung-galaxy-s6-edge-plus-32gb-chinh-hang-p4874.html">Samsung Galaxy S6 Edge Plus - 32GB - Chính hãng</a></h4>
@@ -533,7 +515,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy J7 (2016) - Chính hãng" height="170" src="./image/201606241543169079_samsung-galaxy-j7-2016-1.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy J7 (2016) - Chính hãng" height="170" src="assets/image/201606241543169079_samsung-galaxy-j7-2016-1.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/samsung-galaxy-j7-2016-chinh-hang-p7708.html">Samsung Galaxy J7 (2016) - Chính hãng</a></h4>
@@ -555,7 +537,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy A3 (2016)" height="170" src="./image/201603021604011197_samsung-galaxy-a3-2016-400x460.png"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy A3 (2016)" height="170" src="assets/image/201603021604011197_samsung-galaxy-a3-2016-400x460.png"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/samsung-galaxy-a3-2016-p5494.html">Samsung Galaxy A3 (2016)</a></h4>
@@ -576,7 +558,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy J5 (2016) - Chính hãng" height="170" src="./image/201606241535548616_samsung-galaxy-j5.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Samsung Galaxy J5 (2016) - Chính hãng" height="170" src="assets/image/201606241535548616_samsung-galaxy-j5.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/samsung-galaxy-j5-2016-chinh-hang-p7707.html">Samsung Galaxy J5 (2016) - Chính hãng</a></h4>
@@ -598,7 +580,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S Plus - 16GB - Rose Gold/Gold/White" height="170" src="./image/201603211015391046_iPhone 6s Plus.png"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S Plus - 16GB - Rose Gold/Gold/White" height="170" src="assets/image/201603211015391046_iPhone 6s Plus.png"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/apple-iphone-6s-plus-16gb-rose-goldgoldwhite-p5128.html">Apple iPhone 6S Plus - 16GB - Rose Gold/Gold/White</a></h4>
@@ -620,7 +602,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S Plus - 64GB - Space Gray/White/Gold/Rose Gold - Chính hãng FPT, DGW" height="170" src="./image/201511051709304808_iphone 6s plus fpt.png"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Apple iPhone 6S Plus - 64GB - Space Gray/White/Gold/Rose Gold - Chính hãng FPT, DGW" height="170" src="assets/image/201511051709304808_iphone 6s plus fpt.png"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/apple-iphone-6s-plus-64gb-space-graywhitegoldrose-gold-chinh-hang-fpt-dgw-p4992.html">Apple iPhone 6S Plus - 64GB - Space Gray/White/Gold/Rose Gold - Chính hãng FPT, DGW</a></h4>
@@ -639,12 +621,13 @@ include('menu.php');
 										<div class="details">
 											<ul>
 												<li>Bảo hành: Chính hãng 12 tháng, Bao xài - đổi trả trong 15 ngày đầu</li>
-												<li>Khuyến mại: ..., ..., Hỗ trợ mua sạc dự phòng Pisen Portable Power 10000 mAh - Chính hãng với giá 350.000 vnđ, Thẻ nhớ 32 GB chính hãng, Gậy tự sướng (Selfie Monopod), Sạc dự phòng Xiaomi 10000mAh 2015 Edition - Chính hãng, Đèn LED USB, Nokia 108 Dual sim</li>
+												<li>Khuyến mại: ..., ..., Hỗ trợ mua sạc dự phòng Pisen Portable Power 10000 mAh - Chính hãng với giá 350.000 vnđ, Thẻ nhớ 32 GB chính hãng, Gậy tự sướng (Selfie Monopod), Sạc dự phòng Xiaomi 10000mAh 2015 Edition - Chính hãng, Đèn LED USB, Nokia 108 Dual sim
+												</li>
 												<li>Giá trên đã bao gồm 10% VAT</li>
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Oppo F1 Plus (Oppo R9)" height="170" src="./image/201606111803338456_oppo-f1-plus.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Oppo F1 Plus (Oppo R9)" height="170" src="assets/image/201606111803338456_oppo-f1-plus.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/oppo-f1-plus-oppo-r9-p7573.html">Oppo F1 Plus (Oppo R9)</a></h4>
@@ -665,7 +648,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Sony Xperia XA - Chính hãng" height="170" src="./image/201607040931156980_201606231253268261_sony-xperia-x-1.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Sony Xperia XA - Chính hãng" height="170" src="assets/image/201607040931156980_201606231253268261_sony-xperia-x-1.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/sony-xperia-xa-chinh-hang-p7883.html">Sony Xperia XA - Chính hãng</a></h4>
@@ -687,7 +670,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Xiaomi Redmi 3S - 16GB" height="170" src="./image/201606251432509353_Untitled-3.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Xiaomi Redmi 3S - 16GB" height="170" src="assets/image/201606251432509353_Untitled-3.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/xiaomi-redmi-3s-16gb-p7952.html">Xiaomi Redmi 3S - 16GB</a></h4>
@@ -709,7 +692,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Sony Xperia X - Chính hãng" height="170" src="./image/201607111602102241_123.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Sony Xperia X - Chính hãng" height="170" src="assets/image/201607111602102241_123.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/sony-xperia-x-chinh-hang-p7884.html">Sony Xperia X - Chính hãng</a></h4>
@@ -730,7 +713,7 @@ include('menu.php');
 											</ul>
 										</div>
 									</a>
-									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Xiaomi Mi Band 2" height="170" src="./image/201607061601429391_2016062014552935evf71z.jpg"></div>
+									<div class="mosaic-backdrop" style="display: block;"><img width="219" alt="Xiaomi Mi Band 2" height="170" src="assets/image/201607061601429391_2016062014552935evf71z.jpg"></div>
 								</div>
 								<div class="product-name">
 									<h4><a href="https://hoanghamobile.com/xiaomi-mi-band-2-p7992.html">Xiaomi Mi Band 2</a></h4>
@@ -745,7 +728,4 @@ include('menu.php');
 		</div>
 	</div>
 </div>
-
-<?php
-include("footer.php");
-?>
+@include('fromtend.common.footer');

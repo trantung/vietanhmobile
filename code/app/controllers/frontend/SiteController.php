@@ -43,7 +43,8 @@ class SiteController extends BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$data = Products::find($id);
+		return View::make('fromtend.detail')->with(compact('data'));
 	}
 
 
@@ -55,7 +56,7 @@ class SiteController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		
 	}
 
 

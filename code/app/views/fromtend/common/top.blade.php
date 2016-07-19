@@ -11,7 +11,7 @@
 					</a>
 				</div>
 				<div class="input">
-					<form action="https://hoanghamobile.com/tim-kiem.html">
+					<form action="">
 						<div class="control"><input name="kwd" placeholder="Nhập từ khóa tìm kiếm" autocomplete="off"></div>
 						<button type="submit"><i class="fa fa-search"></i> Tìm kiếm</button>
 					</form>
@@ -25,5 +25,3 @@
    </div>
 </div>
 
-	@include('fromtend.common.menu');
-	@include('fromtend.common.slide') ;
