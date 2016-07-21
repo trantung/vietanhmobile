@@ -25,8 +25,3 @@
    </div>
 </div>
 
-<<<<<<< HEAD:code/app/views/fromtend/common/top.blade.php
-=======
-	@include('frontend.common.menu');
-	@include('frontend.common.slide') ;
->>>>>>> d6936d38f5e2fef06a2566b0108b3e3fe1d2b951:code/app/views/frontend/common/top.blade.php

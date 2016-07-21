@@ -1,11 +1,8 @@
-<<<<<<< HEAD:code/app/views/fromtend/index.blade.php
 @include('fromtend.common.header');
 @include('fromtend.common.top');
 @include('fromtend.common.menu');
 @include('fromtend.common.slide');
-@include('frontend.common.header');
-@include('frontend.common.top');
-
+@include('fromtend.common.header');
 		<div class="content">
 			<div class="main-width">
 				<div class="main-home">
@@ -642,15 +639,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="main-width">
-					<div class="home-ad">
-						<ul>
-							<li class="ad_3_col"><a target="_top" title="Quảng cáo iPad air 2"><img src="assets/image/201504061543593834_Untitled-1.jpg"></a></li>
-							<li class="ad_3_col"><a target="_top" title="Quảng cáo fone pad 7"><img src="assets/image/201504031822051742_Miễn phí vận chuyển.jpg"></a></li>
-							<li class="ad_3_col"><a target="_top" title="Quảng cáo Galaxy tab 4"><img src="assets/image/201505081454383264_201504031822364384_Trả góp 0 đồng.png"></a></li>
-						</ul>
-					</div>
-				</div>
+				
 				<div class="section">
 					<div class="box-container">
 						<div class="box-head"><a href="https://hoanghamobile.com/may-tinh-bang-c9.html" class="box-title">Máy tính bảng</a> <a href="https://hoanghamobile.com/may-tinh-bang-c9.html" class="more">Xem tất cả <i class="fa fa-angle-right"></i></a></div>
@@ -882,14 +871,6 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div class="main-width">
-					<div class="home-ad">
-						<ul>
-							<li class="ad_2_col"><a href="http://facebook.com/hoanghamobilecom" target="_top" title="Fanpage"><img src="assets/image/201507041625275192_fanpage-1.png"></a></li>
-							<li class="ad_2_col"><a href="https://hoanghamobile.com/tuyen-dung" target="_top" title="FANPAGE"><img src="assets/image/201507041633097417_^7F95B85CC121EFB78AD167B2AFAB2B3729BB82736193529A3C^pimgpsh_fullsize_distr.jpg"></a></li>
-						</ul>
 					</div>
 				</div>
 				<div class="section">
@@ -1728,5 +1709,5 @@
 				</div>
 			</div>
 		</div>
-@include('frontend.common.footer');
+@include('fromtend.common.footer');
 

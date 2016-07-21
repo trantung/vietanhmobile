@@ -2,8 +2,11 @@
 	<div class="main-width">
 		<div class="nav">
 			<nav class="all-nav">
-				<div class="root-nav"><a href="javascript:;" class="root actived"><i class="fa fa-bars"></i> <span>Danh mục sản phẩm</span></a></div>
-				<div class="nav-items" style="display: none;">
+				<div class="root-nav"><a href="javascript:;" class="root actived">
+				<!-- <i class="fa fa-bars"></i>  -->
+				<img src="assets/image/iconmenu.png" style="float: left;margin-top: -6px;height=30px;width: 30px;">
+				<span>Danh mục sản phẩm</span></a></div>
+				<div class="nav-items" style="display: block;">
 					<ul>
 						<li data-submenu-id="menu_5">
 							<div class="border">
@@ -250,7 +253,9 @@
 		</div>
 		<div class="menu-content">
 			<div class="search">
-				<div class="home"><a href="https://hoanghamobile.com/"><i class="fa fa-home" title="Hoàng Hà Mobile"></i></a></div>
+				<div class="home"><a href="#">
+					<img src="assets/image/home.png" style="width: 30px;">
+				</a></div>
 				<div class="input">
 					<form action="https://hoanghamobile.com/tim-kiem.html">
 						<div class="control"><input name="kwd" placeholder="Nhập từ khóa tìm kiếm" autocomplete="off"></div>
@@ -259,17 +264,7 @@
 				</div>
 				<div class="tags"><strong>Từ khóa:</strong> <a href="https://hoanghamobile.com/tim-kiem.html?kwd=Samsung%20Galaxy%20S7">Samsung Galaxy S7</a> <a href="https://hoanghamobile.com/tim-kiem.html?kwd=iphone%206s">iphone 6s</a> <a href="https://hoanghamobile.com/tim-kiem.html?kwd=Oppo%20Neo%207">Oppo Neo 7</a></div>
 			</div>
-			<div class="tools-member">
-				<div class="member">
-					<p><span>Xin chào:</span> <a href="javascript:;" class="btn-login">Đăng nhập</a></p>
-					<p><a href="https://hoanghamobile.com/Account/Register" class="black"><i class="fa fa-user"></i> <strong>Đăng ký tài khoản</strong></a></p>
-				</div>
-				<div class="cart btn-your-cart">
-					<div class="cart-number"><span class="cartNumber">0</span></div>
-					<p class="cart-info"><a class="black" href="javascript:;"><strong>Giỏ hàng</strong></a></p>
-				</div>
-				<div class="check-order"><a href="javascript:;" class="button btn-check-order" style="background:red;color:#fff"><i class="fa fa-truck"></i> <span>Kiểm tra đơn hàng</span></a></div>
-			</div>
+			
 		</div>
 		<div class="note">
 			<div class="nav-breadcrumb"></div>

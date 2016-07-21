@@ -8,14 +8,13 @@
 		<meta property="og:title" content="Điện thoại di động gía rẻ nhất - Siêu thị điện thoại Hoàng Hà Mobile">
 		<meta name="description" property="og:description" content="Điện thoại di động gía rẻ nhất - Siêu thị điện thoại Hoàng Hà Mobile">
 		<link href="assets/css/hoanghamobilev2.css" rel="stylesheet">
-		<!-- <script src="assets/js/cb=gapi.loaded_0" async></script> -->
-		<script async src="assets/js/fbevents.js"></script>
-		<script type="text/javascript" async src="assets/js/conversion_async.js"></script>
-		<script type="text/javascript" async src="assets/js/conversion_async.js"></script>
-		<script type="text/javascript" src="assets/js/tab_script1.js"></script>
-		<script type="text/javascript" src="assets/js/scripts_index.js"></script>
 		<script type="text/javascript" src="assets/js/tab_script1.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-		<script type="text/javascript" src="assets/js/tab_script1.js"></script>
+		<link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/owl.theme.css">
+		<!-- <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"> -->
+		<script type="text/javascript" src="assets/js/owl.carousel.js"></script>
+		<script src="assets/js/jquery-2.1.4.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
 	</head>
 	<body>

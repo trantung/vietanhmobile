@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\SoftDeletingTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class TypeNew extends Eloquent implements SluggableInterface
+class TypeNew extends Eloquent 
 {
 	use SoftDeletingTrait;
-	use SluggableTrait;
     protected $table = 'type_news';
     protected $fillable = ['name', 'slug', 'status', 'position'];
     protected $dates = ['deleted_at'];

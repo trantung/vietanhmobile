@@ -22,7 +22,7 @@ class SiteController extends HomeController {
 	 */
 	public function index()
 	{
-		dd(123);
+		return View::make('fromtend.index');
 	}
 
 

@@ -10,7 +10,7 @@
 						<div u="slides" id="slides" style="z-index: 0; position: absolute; overflow: hidden;" debug-id="slide-board">
 							<div style="width: 1920px; height: 416px; top: 0px; left: 0px; position: absolute; opacity: 0; display: none; background-color: rgb(0, 0, 0);"></div>
 							<div debug-id="slide-0" style="width: 1920px; height: 416px; top: 0px; left: 1920px; position: absolute; overflow: hidden;">
-								<a href="https://goo.gl/wXM9vR" target="_blank" style="width: 1920px; height: 416px; top: 0px; left: 0px;" jssor-content="true"><img u="image" src="assets/image/201607121707470227_sửa lại.png" title="Banner event chương trình Trần Phú " border="0" jssor-content="true" style="width: 1920px; height: 471px; top: -27.5px; left: 0px; position: absolute;"></a>
+								<a href="#" target="_blank" style="width: 1920px; height: 416px; top: 0px; left: 0px;" jssor-content="true"><img u="image" src="assets/image/201607121707470227_sửa lại.png" title="Banner event chương trình Trần Phú " border="0" jssor-content="true" style="width: 1920px; height: 471px; top: -27.5px; left: 0px; position: absolute;"></a>
 								<div style="width: 1920px; height: 416px; top: 0px; left: 0px; z-index: 1000; display: none;" jssor-content="true"></div>
 							</div>
 							<div debug-id="slide-1" style="width: 1920px; height: 416px; top: 0px; left: -1920px; position: absolute; overflow: hidden;">
