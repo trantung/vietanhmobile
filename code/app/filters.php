@@ -48,10 +48,9 @@ Route::filter('auth', function()
 	}
 });
 
-
 Route::filter('admin', function()
 {
-	if (Auth::user()->guest()){
+	if (Auth::admin()->guest()){
 		return Redirect::route('admin.login');
 	}
 });
@@ -90,7 +89,7 @@ Route::filter('guest', function()
 
 Route::filter('csrf', function()
 {
-	if (Session::token() !== Input::get('_token'))
+	if (Session::token() != Input::get('_token'))
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}

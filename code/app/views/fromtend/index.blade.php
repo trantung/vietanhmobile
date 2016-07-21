@@ -1,7 +1,11 @@
+<<<<<<< HEAD:code/app/views/fromtend/index.blade.php
 @include('fromtend.common.header');
 @include('fromtend.common.top');
 @include('fromtend.common.menu');
 @include('fromtend.common.slide');
+@include('frontend.common.header');
+@include('frontend.common.top');
+
 		<div class="content">
 			<div class="main-width">
 				<div class="main-home">
@@ -1724,5 +1728,5 @@
 				</div>
 			</div>
 		</div>
-@include('fromtend.common.footer');
+@include('frontend.common.footer');
 

@@ -3,10 +3,7 @@
 <div class="form-group">
 	<label for="metaname"><u>Thẻ meta</u></label>
 	<div class="box-body">
-		<div class="form-group">
-			<label for="status_seo">Trạng thái</label>
-			{{ Form::select('status_seo', [INACTIVE => 'Chưa kích hoạt', ACTIVE => 'Kích hoạt'], $inputSeo->status_seo, array('class' => 'form-control')) }}
-		</div>
+
 		<div class="form-group">
 			<label for="title_site">Thẻ title</label>
 			{{ Form::text('title_site', $inputSeo->title_site, textParentCategory('Thẻ title', true)) }}
@@ -30,9 +27,7 @@
 		<div class="form-group">
 			<label for="image_url_fb">Upload ảnh</label>
 			{{ Form::file('image_url_fb') }}
-			@if(!empty($inputSeo->image_url_fb))
 			<img class="image_fb" src="{{ url($pathToImageSeo . $inputSeo->image_url_fb) }}" />
-			@endif
 		</div>
 		<div class="form-group">
 			<label for="image_url_fb">{{ $inputSeo->image_url_fb }}</label>
@@ -44,10 +39,7 @@
 <div class="form-group">
 	<label for="metaname"><u>Thẻ meta</u></label>
 	<div class="box-body">
-		<div class="form-group">
-			<label for="status_seo">Trạng thái</label>
-			{{ Form::select('status_seo', [0 => 'Chưa kích hoạt', 1 => 'Kích hoạt'], null, array('class' => 'form-control')) }}
-		</div>
+
 		<div class="form-group">
 			<label for="title_site">Thẻ title</label>
 			{{ Form::text('title_site','',textParentCategory('Thẻ title')) }}

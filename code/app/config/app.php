@@ -52,7 +52,8 @@ return array(
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'vi',
+	// 'languages' => array('vi','en'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +79,7 @@ return array(
 	|
 	*/
 
-	'key' => '7bnpDPiINkC6PzlcRc3uUpCxDEbQSOMY',
+	'key' => '3Grj3PiSfRWz90gnqE4tHQbPfqJx7ob4',
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
@@ -121,7 +122,10 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		"Ollieread\Multiauth\MultiauthServiceProvider",
-    	
+		// 'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+	    // 'Barryvdh\Debugbar\ServiceProvider',
+	    // 'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
+
 	),
 
 	/*
@@ -188,6 +192,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+		// 'Debugbar' 	      => 'Barryvdh\Debugbar\Facade',
+		// 'LaravelLocalization'   => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
 
 	),
 

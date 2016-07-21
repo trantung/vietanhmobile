@@ -1,54 +1,34 @@
 <?php
-class CommonUpload {
+use Carbon\Carbon;
+class CommonUpload
+{
+	/**
+	*uploadImage Upload image
+	*/
 
-	// type=1:upload avatar product
-	// type=2:upload avatar user
-	public static function commonUploadImage($input, $path, $type = null)
+	public static function uploadImage($id, $path, $imageUrl, $folder, $image = NULL)
 	{
-		$data = null;
-		if (isset($input['linkFile'])) {
-			foreach ($input['linkFile'] as $key => $value) {
-				$filename[$key] = $value->getClientOriginalName();
-				$filename[$key] = changeFileNameImage($filename[$key]);
-				$filename[$key] = $key.$filename[$key];
-				$pathUpload = public_path() . $path . '/' . Auth::user()->id;
-				$uploadSuccess = $value->move($pathUpload, $filename[$key]);
-				if ($key == 0) {
-					if($type == 1) {  
-						$image = Image::make(sprintf(''.$pathUpload.'/%s', $filename[$key]))
-							//->resize(PRODUCT_AVATAR_WIDTH, PRODUCT_AVATAR_HEIGHT)
-							->save();
- 					} else {       
- 						$image = Image::make(sprintf(''.$pathUpload.'/%s', $filename[$key]))
-							->resize(USER_AVATAR_WIDTH, USER_AVATAR_HEIGHT)
-							->save();
- 					}
-				}
-				else { 
-					$image = Image::make(sprintf(''.$pathUpload.'/%s', $filename[$key]))
-						//->resize(PRODUCT_SLIDE_WIDTH, PRODUCT_SLIDE_HEIGHT)
-						->save();
-				}
-				$data[$key] = ['linkFile' =>  $filename[$key]];
-
-			}
-			return Common::returnData($data);
+		$destinationPath = public_path().'/'.$path.'/'.$folder.'/'.$id.'/';
+		if(Input::hasFile($imageUrl)){
+			$file = Input::file($imageUrl);
+			$filename = $file->getClientOriginalName();
+			$uploadSuccess = $file->move($destinationPath, $filename);
+			return $filename;
 		}
-        throw new Prototype\Exceptions\UploadErrorException();
+		if ($image) {
+			return $image;
+		}
 	}
-	public static function uploadFile($input, $path){
-		// if (isset($input['linkFile']))
-		// 	{
-		if (Input::hasFile('linkFile'))
-			{
-				$pathUpload =  $path  ;
-			    $file = Input::file('linkFile');
-				dd($file);			    
-			    Input::file('linkFile')->move(''.$pathUpload.'/%s' ,'images/user');
-			    // $file->move(''.$pathUpload.'/%s' , $file->getClientOriginalName());
-		 
-			    $image = Image::make(sprintf($pathUpload, $file->getClientOriginalName()))->resize(USER_AVATAR_WIDTH, USER_AVATAR_HEIGHT)->save();
-			}
+
+	public static function getNameTypeSlide($type)
+	{
+		if ($type == SLIDE_TOP) {
+			return 'Banner';
+		}
+		if ($type == SLIDE_BOTTOM) {
+			return 'Đối tác';
+		}
+
 	}
 
 }

@@ -1,132 +1,176 @@
 <?php
 class Common {
-	public static function getComment($modelName, $modelId)
+
+	public static function getObject($modelId, $modelName)
 	{
-		$comments = Comment::where('model_id', $modelId)
-			->where('model_name', $modelName)
-			->get();
-		return $comments;
-	}
-	public static function insertComment($modelName, $modelId, $input)
-	{
-		$comment['model_name'] = $modelName;
-		$comment['model_id'] = $modelId;
-		$comment['description'] = $input['description'];
-		$comment['user_id'] = Auth::user()->get()->id;
-		$comment['status'] = $input['status'];
-		return Comment::create($comment)->id;
-	}
-	public static function getDateTimeString($datetime, $option = null)
-	{
-		if(!empty($datetime)) {
-			if($option) {
-				$date = date('d-m-Y H:i:s', strtotime($datetime));	
-			} else {
-				$date = date('d-m-Y', strtotime($datetime));
-			}
-			return $date;	
-		}
-		return '';
-	}
-	public static function checkUserFunction($functionId)
-	{
-		// $user = Auth::user()->get();
-		// if($user) {
-		// 	if ($user->role_id == ROLE_ADMIN) {
-		// 		return true;
-		// 	}
-		// 	$dep = DepRegencyPerFun::where('user_id', $user->id)
-		// 			->groupBy('dep_id')
-		// 			->lists('dep_id');
-		// 	if($dep) {
-		// 		$func = DepartmentFunction::whereIn('dep_id', $dep)
-		// 					->groupBy('function_id')
-		// 					->lists('function_id');
-		// 		if(in_array($functionId, $func)) {
-		// 			return true;
-		// 		}
-		// 	}
-		// }
-		// return false;
-	}
-	public static function getModelUserStatus($model1, $model2, $relateField, $userId, $status)
-	{
-		$data = DB::table($model1)->join($model2, $model2.'.'.$relateField, '=', $model1.'.id')
-			->select($model1.'.*')
-			->where($model2.'.user_id', $userId)
-			->where($model2.'.status', $status)
-			->get();
-		if($data) {
-			return $data;
+		$object = AdminLanguage::where('model_name', $modelName)
+			->where('model_id', $modelId)
+			->first();
+		if ($object) {
+			return $object;
 		}
 		return null;
 	}
-	public static function checkModelUserFunction($modelName, $modelId, $field)
+
+	public static function getValue($modelId, $modelName, $value)
 	{
-		$user = Auth::user()->get();
-		if($user) {
-			if($user->role_id == ROLE_ADMIN) {
-				return true;
-			}
-			$data = $modelName::where($field, $modelId)
-				->where('user_id', $user->id)
-				->where('status', ASSIGN_STATUS_1)
-				->first();
-			if($data) {
-				$perId = $data->per_id;
-				if($perId == PERMISSION_1) {
-					return true;
-				} else {
-					return false;
-				}
-			}
-		}
-		return false;
+		return $modelName::find($modelId)->$value;
 	}
-	public static function checkModelUserStatus($modelName, $modelId, $field)
+	public static function getIdEn($id, $modelName)
 	{
-		$user = Auth::user()->get();
-		if($user) {
-			if($user->role_id == ROLE_ADMIN) {
-				return ASSIGN_STATUS_1;
-			}
-			$data = $modelName::where($field, $modelId)
-				->where('user_id', $user->id)
-				->first();
-			if($data) {
-				return $data->status;
-			}
-		}
-		return NULL;
-	}
-	public static function checkPermissionUser($funId, $buttonId)
-	{
-		$userId = CommonUser::getUserId();
-		$userRole = CommonUser::getUserRole();
-		if ($userRole == ROLE_ADMIN) {
-			return true;
-		}
-		if ($userRole == ROLE_USER) {
-			$check = FunButtonUser::where('user_id', $userId)
-				->where('button_id', $buttonId)
-				->where('fun_id', $funId)
-				->first();
-			if ($check) {
-				return true;
-			}
-			return false;
-		}
-	}	
-	public static function getListTask($taskId)
-	{
-		return Task::where('id', '!=', $taskId)->lists('name', 'id');
-	}
-	public static function getUserIdByUserName($username)
-	{
-		$user = User::where('username', $username)->first();
-		if ($user) {
-			return $userId = $user->id;
+		$en = self::getObject($id, $modelName);
+		if ($en) {
+			$idEn = $en->relate_id;
+			return $idEn;
 		}
 		return null;
 	}
+	public static function deleteLanguage($id, $modelName)
+	{
+		$relateId = self::getIdEn($id, $modelName);
+
+		if ($relateId) {
+			$modelName::find($relateId)->delete();
+			$lang = AdminLanguage::where('model_name', $modelName)
+				->where('model_id', $id);
+			$lang->delete();
+		}
+		$modelName::find($id)->delete();
+	}
+
+	public static function objectLanguage($modelName, $modelId, $lang)
+	{
+		if ($lang == LANG_VI) {
+			return $modelName::find($modelId);
+
+		}
+		if ($lang == LANG_EN) {
+			$objectLanguage = AdminLanguage::where('model_name', $modelName)
+				->where('model_id', $modelId)
+				->first();
+			$relateId = $objectLanguage->relate_id;
+			return $modelName::find($relateId);
+		}
+	}
+
+	public static function getValueLanguage($modelName, $modelId, $value)
+	{
+		$objectLanguage = AdminLanguage::where('model_name', $modelName)
+			->where('model_id', $modelId)
+			->first();
+		return $objectLanguage->$value;
+	}
+	public static function getObjectLanguage($modelName, $lang, $orderBy = null)
+	{
+		if ($lang == LANG_VI) {
+			$listId = AdminLanguage::where('model_name', $modelName)
+				->lists('model_id');
+			if ($orderBy) {
+				$object = $modelName::whereIn('id', $listId)->orderBy($orderBy, 'asc')->get();
+			}
+			else{
+				$object = $modelName::whereIn('id', $listId)->get();
+			}
+		}
+		if ($lang == LANG_EN) {
+			$listId = AdminLanguage::where('model_name', $modelName)
+				->lists('relate_id');
+			$object = $modelName::whereIn('id', $listId)->get();
+			if ($orderBy) {
+				$object = $modelName::whereIn('id', $listId)->orderBy($orderBy, 'asc')->get();
+			}
+			else{
+				$object = $modelName::whereIn('id', $listId)->get();
+			}
+		}
+		return $object;
+	}
+
+	public static function getObjectLanguageByStatus($modelName, $lang, $status=1)
+	{
+		if ($lang == LANG_VI) {
+			$listId = AdminLanguage::where('model_name', $modelName)
+				->where('status', $status)
+				->orderBy('position')
+				->lists('model_id');
+			$object = $modelName::whereIn('id', $listId)->get();
+		}
+		if ($lang == LANG_EN) {
+			$listId = AdminLanguage::where('model_name', $modelName)
+				->where('status', $status)
+				->orderBy('position')
+				->lists('relate_id');
+			$object = $modelName::whereIn('id', $listId)->get();
+		}
+		return $object;
+	}
+
+	public static function getNews($type, $lang, $limit=null)
+	{
+		if ($lang == LANG_VI) {
+			$list = DB::table('news')
+						->join('languages', 'languages.model_id', '=', 'news.id')
+						->select('news.id', 'news.type_new_id', 'news.name'
+								, 'news.slug', 'news.description', 'news.image_url')
+						->where('languages.status', 2)
+						->whereNull('news.deleted_at')
+						->where('news.type_new_id', $type)
+						->distinct()
+						->limit($limit)
+						->orderBy('languages.position', 'asc')
+						->get();
+		}
+		if ($lang == LANG_EN) {
+			$list = DB::table('news')
+						->join('languages', 'languages.relate_id', '=', 'news.id')
+						->select('news.id', 'news.type_new_id', 'news.name'
+								, 'news.slug', 'news.description', 'news.image_url')
+						->where('languages.status', 2)
+						->whereNull('news.deleted_at')
+						->where('news.type_new_id', $type)
+						->distinct()
+						->limit($limit)
+						->orderBy('languages.position', 'asc')
+						->get();
+		}
+		return $list;
+	}
+
+	public static function getIdVi($relateId, $relateName)
+	{
+		$object = AdminLanguage::where('model_name', $relateName)
+			->where('relate_id', $relateId)
+			->first();
+		if ($object) {
+			$idVi = $object->model_id;
+			return $idVi;
+		}
+		return $relateId;
+	}
+
+	public static function getTypeList($modelName)
+	{
+		$listTypeId = AdminLanguage::where('model_name', $modelName)
+			->lists('model_id');
+		return $modelName::whereIn('id', $listTypeId)->lists('name', 'id');
+	}
+
+	public static function objectLanguage2($modelName, $modelId, $lang)
+	{
+		if ($lang == LANG_VI) {
+			$objectLanguage = AdminLanguage::where('model_name', $modelName)
+				->where('model_id', $modelId)
+				->first();
+			$relateId = $objectLanguage->relate_id;
+			return $modelName::find($relateId);
+		}
+		if ($lang == LANG_EN) {
+			$objectLanguage = AdminLanguage::where('model_name', $modelName)
+				->where('relate_id', $modelId)
+				->first();
+			$modelId = $objectLanguage->model_id;
+			return $modelName::find($modelId);
+		}
+	}
+
 }
