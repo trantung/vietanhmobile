@@ -1,19 +1,6 @@
-<?php
+<?php 
 
-class SiteController extends HomeController {
-
-	public function __construct() {
-		$viTypes = Common::getObjectLanguage('TypeNew', LANG_VI, 'position');
-		$enTypes = Common::getObjectLanguage('TypeNew', LANG_EN, 'position');
-		View::share('viTypes', $viTypes);
-		View::share('enTypes', $enTypes);
-
-	}
-
-	public function returnPage404()
-	{
-		return View::make('404');
-	}
+class CategoryController extends SiteController {
 
 	/**
 	 * Display a listing of the resource.
@@ -22,8 +9,7 @@ class SiteController extends HomeController {
 	 */
 	public function index()
 	{
-		$category = CommonSite::getCategory();
-		return View::make('fromtend.index')->with(compact('category'));
+		//
 	}
 
 
@@ -57,8 +43,8 @@ class SiteController extends HomeController {
 	 */
 	public function show($id)
 	{
-		$data = Products::find($id);
-		return View::make('fromtend.detail')->with(compact('data'));
+		$category = CommonSite::getCategoryById($id);
+		return View::make('fromtend.category')->with(compact('category'));
 	}
 
 
@@ -70,7 +56,7 @@ class SiteController extends HomeController {
 	 */
 	public function edit($id)
 	{
-		
+		//
 	}
 
 
@@ -96,11 +82,10 @@ class SiteController extends HomeController {
 	{
 		//
 	}
-
-	public function search()
+	public function listProduct($id)
 	{
-		dd(999);
-		$input = Input::except('_token');
+
 	}
+
 
 }

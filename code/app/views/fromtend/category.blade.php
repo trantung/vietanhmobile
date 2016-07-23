@@ -5,9 +5,8 @@
 @stop
 
 @section('content')
-
-@include('fromtend.common.slide');			
-@include('fromtend.common.product');
+				
+				@include('fromtend.common.product',  array('category' => $category));
 
 
 @stop

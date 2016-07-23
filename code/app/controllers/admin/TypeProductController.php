@@ -1,19 +1,6 @@
-<?php
+<?php 
 
-class SiteController extends HomeController {
-
-	public function __construct() {
-		$viTypes = Common::getObjectLanguage('TypeNew', LANG_VI, 'position');
-		$enTypes = Common::getObjectLanguage('TypeNew', LANG_EN, 'position');
-		View::share('viTypes', $viTypes);
-		View::share('enTypes', $enTypes);
-
-	}
-
-	public function returnPage404()
-	{
-		return View::make('404');
-	}
+class TypeProductController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -22,8 +9,8 @@ class SiteController extends HomeController {
 	 */
 	public function index()
 	{
-		$category = CommonSite::getCategory();
-		return View::make('fromtend.index')->with(compact('category'));
+		$data = Product::whereNull('parent_id')->orderBy('id', 'desc')->paginate(PAGINATE);
+		return View::make('admin.category.index')->with(compact('data'));
 	}
 
 
@@ -34,7 +21,7 @@ class SiteController extends HomeController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.category.create');
 	}
 
 
@@ -45,7 +32,20 @@ class SiteController extends HomeController {
 	 */
 	public function store()
 	{
-		//
+		$rules = array(
+			'name' => 'required',
+		);
+		$input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('TypeProductController@create')
+	            ->withErrors($validator);
+        }else{
+        	
+        	CommonUpload::uploadFile($input, USER_AVATAR);
+        	return Redirect::action('TypeProductController@index');
+
+        }
 	}
 
 
@@ -57,8 +57,7 @@ class SiteController extends HomeController {
 	 */
 	public function show($id)
 	{
-		$data = Products::find($id);
-		return View::make('fromtend.detail')->with(compact('data'));
+		//
 	}
 
 
@@ -70,7 +69,7 @@ class SiteController extends HomeController {
 	 */
 	public function edit($id)
 	{
-		
+		//
 	}
 
 
@@ -94,13 +93,9 @@ class SiteController extends HomeController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Product::find($id)->delete();
+		return Redirect::action('TypeProductController@index');
 	}
 
-	public function search()
-	{
-		dd(999);
-		$input = Input::except('_token');
-	}
 
 }

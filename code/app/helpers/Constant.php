@@ -11,7 +11,7 @@ define('EDITOR', 2);
 define('SEO', 3);
 
 //pagination manager admin
-define('PAGINATE', 20);
+define('PAGINATE', 10);
 //pagination frontend
 define('FRONENDPAGINATE', 15);
 //url upload img
@@ -83,3 +83,4 @@ define('IMAGE_BOTTOM', 3);
 //language
 define('LANG_VI', 'vi');
 define('LANG_EN', 'en');
+define('RECORDS', 5);

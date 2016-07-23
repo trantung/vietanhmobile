@@ -33,7 +33,6 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
 	Route::resource('/news', 'NewsController');
 	Route::resource('/products', 'AdminProductController');
-	Route::resource('/category', 'AdminCategoryController');
 
 	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
 	Route::get('/slider/search', array('uses' => 'AdminSlideController@search', 'as' => 'admin.slide.search'));
@@ -44,6 +43,12 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/about_us_company', 'AdminAboutUsController');
 	Route::resource('/type_about_us', 'AdminTypeAboutController');
 
+	Route::resource('/category', 'TypeProductController');
+
 });
+Route::resource('/san-pham', 'CategoryController');
+
 Route::get('/{id}',  'SiteController@show');
+Route::get('/', 'SiteController@search');
 Route::resource('/', 'SiteController');
+
