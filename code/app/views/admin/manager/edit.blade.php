@@ -5,16 +5,6 @@
 @stop
 
 @section('content')
-
-@if(Admin::isAdmin())
-<div class="row margin-bottom">
-	<div class="col-xs-12">
-		<a href="{{ action('ManagerController@index') }}" class="btn btn-success">Danh sách thành viên</a>
-		<a href="{{ action('ManagerController@create') }}" class="btn btn-primary">Thêm thành viên</a>
-	</div>
-</div>
-@endif
-
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
@@ -33,7 +23,7 @@
 						<label for="password">Password</label>
 						<div class="row">
 							<div class="col-sm-6">
-								<input type="text" class="form-control" id="password" placeholder="Password" name="password">
+								{{ Form::password('password') }}
 							</div>
 						</div>
 					</div>
@@ -45,16 +35,6 @@
 							</div>
 						</div>
 					</div>
-					@if(Admin::isAdmin())
-						<div class="form-group">
-							<label for="email">Quyền hạn</label>
-								<div class="row">
-									<div class="col-sm-6">
-										{{ Form::select('role_id', selectRoleId(), $data->role_id, array('class' =>'form-control')) }}
-								</div>
-							</div>
-						</div>
-					@endif
 				</div>
 				<!-- /.box-body -->
 

@@ -26,25 +26,6 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="form-group">
-					<label for="name">Type</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{ Form::select('type', [SLIDE_TOP => 'Banner', SLIDE_BOTTOM => 'Đối tác']) }}
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="name">Link</label>
-					<div class="row">
-						<div class="col-sm-6">
-							{{ Form::text('link', null , textParentCategory('Đường dẫn')) }}
-						</div>
-					</div>
-				</div>
-
 				<div class="form-group">
 					<label for="name">Image</label>
 					<p>Kích thước: Banner: 1350x500 / đối tác: 250x130 / Dung lượng < 1Mb</p>

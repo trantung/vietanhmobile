@@ -9,8 +9,9 @@ class ManagerController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Admin::orderBy('id', 'asc')->paginate(PAGINATE);
-		return View::make('admin.manager.index')->with(compact('data'));
+		// $data = Admin::orderBy('id', 'asc')->paginate(PAGINATE);
+		// return View::make('admin.manager.index')->with(compact('data'));
+		return View::make('admin.dashboard');
 	}
 
 	public function search()
@@ -108,15 +109,9 @@ class ManagerController extends AdminController {
 		$rules = array();
 		$rules = array(
             'username'   => 'required',
-            // 'password'   => 'required',
             'email'      => 'required|email',
-            'role_id'    => 'required',
         );
-        if (!Admin::isAdmin()) {
-        	unset($rules['role_id']);
-        }
         $input = Input::except('_token');
-
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
 			return Redirect::action('ManagerController@edit', $id)
@@ -128,12 +123,8 @@ class ManagerController extends AdminController {
         	} else {
         		$input['password'] = Auth::admin()->get()->password;
         	}
+        	$input['role_id'] = 1;
         	CommonNormal::update($id, $input);
-        	$currentUserId = Auth::admin()->get()->id;
-			$currentRoleId = Auth::admin()->get()->role_id;
-			if($currentRoleId <> ADMIN) {
-				return Redirect::action('ManagerController@edit', $id);
-			}
     		return Redirect::action('ManagerController@index');
         }
 	}

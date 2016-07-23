@@ -16,8 +16,6 @@
 	<tr>
 	  	<th>ID</th>
 	  	<th>Tên</th>
-	  	<th>Type</th>
-	  	<th>Đường dẫn</th>
 	  	<th>Ảnh</th>
 	  	<th style="width:200px;">Action</th>
 	</tr>
@@ -25,8 +23,6 @@
 			<tr>
 			  	<td>{{ $value->id }}</td>
 				<td>{{ $value->name }}</td>
-				<td>{{ CommonUpload::getNameTypeSlide($value->type) }}</td>
-				<td>{{ $value->link }}</td>
 				<td style="width:200px;">
 					<img src="{{ url(UPLOADIMG . UPLOAD_SLIDE . '/' . $value->id . '/' . $value->image_url) }}" width="100%" height="auto"  />
 				</td>

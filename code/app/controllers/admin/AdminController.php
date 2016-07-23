@@ -103,7 +103,7 @@ class AdminController extends BaseController {
         } else {
             $checkLogin = Auth::admin()->attempt($input);
             if($checkLogin) {
-        		return Redirect::action('NewsController@index');
+        		return Redirect::action('ManagerController@index');
             } else {
                 return Redirect::route('admin.login');
             }
