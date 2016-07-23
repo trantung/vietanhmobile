@@ -14,12 +14,6 @@ class CommonProduct
 		}
 		return null;
 	}
-	public static function getOption($model)
-	{
-		$array = array(
-			null => 'Parent',
-		);
-		return $array + self::childOption($model);
-	}
+	
 
 }

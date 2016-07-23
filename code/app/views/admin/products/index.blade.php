@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Quản lý tin' }}
+{{ $title='Quản lý sản phẩm' }}
 @stop
 
 @section('content')
@@ -27,55 +27,25 @@
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>Tên Vietnamese</th>
-			  <th>Tên English</th>
-			  <th>Vị trí sắp xếp</th>
-			  <th>Thể loại</th>
-			  <th>Hiển thị</th>
+			  <th>Tên sản phẩm</th>
+			  <th>Hãng sản xuất</th>
+			  <th>Giá tiền</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
-			@if(!empty($input))
-				@foreach($inputNew as $value)
+				@foreach($data as $value)
 					<tr>
 						<td>{{ $value->id }}</td>
 						<td>{{ $value->name }}</td>
-						<td>@if(NewsManager::getNameEnglish($value->id))
-							{{ NewsManager::getNameEnglish($value->id) }}
-							@endif
-						</td>
-						<td>{{ $value->position }}</td>
-						<td>{{ TypeNew::find($value->type_new_id)->name }}</td>
-						<td>{{ getNameStatus($value->status) }}</td>
+						<td>{{ CommonSite::getCategoryNameByproduct($value->id)->name }}</td>
+						<td>{{ $value->price }}</td>
 						<td>
 							<a href="{{  action('AdminProductController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-							@if(!Admin::isSeo())
 								{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminProductController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 								<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 								{{ Form::close() }}
-							@endif
 						</td>
 					</tr>
 				@endforeach
-			@else
-				@foreach($inputNew as $value)
-					<tr>
-						<td>{{ returnObjectLanguage($value, 'vi', 'AdminNew')->id }}</td>
-						<td>{{ returnObjectLanguage($value, 'vi', 'AdminNew')->name }}</td>
-						<td>{{ returnObjectLanguage($value, 'en', 'AdminNew')->name }}</td>
-						<td>{{ $value->position }}</td>
-						<td>{{ TypeNew::find(returnObjectLanguage($value, 'vi', 'AdminNew')->type_new_id)->name }}</td>
-						<td>{{ getNameStatus($value->status) }}</td>
-						<td>
-							<a href="{{  action('AdminProductController@edit', returnObjectLanguage($value, 'vi', 'AdminNew')->id) }}" class="btn btn-primary">Sửa</a>
-							@if(!Admin::isSeo())
-								{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminProductController@destroy', returnObjectLanguage($value, 'vi', 'AdminNew')->id), 'style' => 'display: inline-block;')) }}
-								<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
-								{{ Form::close() }}
-							@endif
-						</td>
-					</tr>
-				@endforeach
-			@endif
 		  </table>
 		</div>
 		<!-- /.box-body -->
@@ -88,7 +58,7 @@
 	<div class="col-xs-12">
 		<ul class="pagination">
 		<!-- phan trang -->
-		{{ $inputNew->appends(Request::except('page'))->links() }}
+		{{ $data->appends(Request::except('page'))->links() }}
 		</ul>
 	</div>
 </div>

@@ -9,8 +9,8 @@ class AdminProductController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputNew = AdminLanguage::where('model_name', 'AdminNew')->orderBy('id', 'desc')->paginate(PAGINATE);
-		return View::make('admin.products.index')->with(compact('inputNew'));
+		$data = Product::where('typemenu', TYPEPRODUCT)->orderBy('id', 'desc')->paginate(PAGINATE);
+		return View::make('admin.products.index')->with(compact('data'));
 	}
 
 	public function search()

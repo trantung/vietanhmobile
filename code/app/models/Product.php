@@ -11,7 +11,7 @@ class Product extends Eloquent
 	use SoftDeletingTrait;
     protected $table = 'products';
     protected $fillable = ['parent_id', 'description',
-    	'image_url', 'price', 'name', 'short_des', 'weight_number', 'status'];
+    	'image_url', 'price', 'name', 'short_des', 'weight_number', 'status', 'typemenu', 'link_youtube'];
     protected $dates = ['deleted_at'];
 
 }

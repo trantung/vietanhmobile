@@ -59,6 +59,10 @@ class CommonNormal
 		if ($name == 'about_us_company') {
 			return 'AboutUs';
 		}
+		if($name == 'category')
+		{
+			return 'Product';
+		}
 
 	}
 }

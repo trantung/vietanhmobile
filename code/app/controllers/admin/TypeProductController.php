@@ -41,8 +41,14 @@ class TypeProductController extends AdminController {
 			return Redirect::action('TypeProductController@create')
 	            ->withErrors($validator);
         }else{
-        	
-        	CommonUpload::uploadFile($input, USER_AVATAR);
+        	$input['typemenu'] = TYPEMENU;
+        	if($input['parent_id'] == 0)
+        	{
+        		$input['parent_id'] = null;
+        	}
+        	$id =CommonNormal::create($input);
+        	$input['image_url'] = CommonUpload::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_CATEGORY);
+        	CommonNormal::update($id, ['image_url' => $input['image_url']] );
         	return Redirect::action('TypeProductController@index');
 
         }
