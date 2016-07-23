@@ -8,6 +8,8 @@
 			<li><a href="{{ action('AdminProductController@index') }}"><i class="fa fa-newspaper-o"></i> <span>Quản lý sản phẩm</span></a></li>
 			<li><a href="{{ action('AdminContactController@index') }}"><i class="fa fa-newspaper-o"></i> <span>Liên hệ</span></a></li>
 			<li><a href="{{ action('AdminSlideController@index') }}"><i class="fa fa-newspaper-o"></i> <span>Slide</span></a></li>
+			<li><a href="{{ action('AdminContactController@index') }}"><i class="fa fa-newspaper-o"></i> <span>Quản lý footer</span></a></li>
+			<li><a href="{{ action('ConfigHeaderController@index') }}"><i class="fa fa-newspaper-o"></i> <span>Quản lý header</span></a></li>
 			<!-- @if(Admin::isAdmin()) -->
 			<!-- <li>
 				<a href="{{ action('ManagerController@index') }}">

@@ -47,22 +47,7 @@
 				</div>
 			</nav>
 		</div>
-		<div class="menu-content">
-			<div class="search">
-				<div class="home"><a href="{{ action('SiteController@index') }}">
-					<img src="../assets/image/home.png" style="width: 30px;">
-				</a></div>
-				<div class="input">
-					{{ Form::open(array('action' => 'SiteController@search', 'method' => 'GET')) }}
-						<div class="control">
-							<input name="keywork" placeholder="Nhập từ khóa tìm kiếm" autocomplete="off">
-						</div>
-						<button type="submit"><i class="fa fa-search"></i> Tìm kiếm</button>
-					 {{ Form::close() }}
-				</div>
-			</div>
-			
-		</div>
+		
 		<div class="note">
 			<div class="nav-breadcrumb"></div>
 			

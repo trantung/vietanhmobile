@@ -1,6 +1,6 @@
 <?php
 
-class AdminContactController extends AdminController {
+class ConfigHeaderController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -55,8 +55,8 @@ class AdminContactController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$data = Contact::find(1);
-		return View::make('admin.contact.edit')->with(compact('data', 'id'));
+		$data = Header::find(1);
+		return View::make('admin.header.edit')->with(compact('data', 'id'));
 	}
 
 
@@ -75,12 +75,12 @@ class AdminContactController extends AdminController {
         $input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
-			return Redirect::action('AdminContactController@edit', $id)
+			return Redirect::action('ConfigHeaderController@edit', $id)
 	            ->withErrors($validator);
         } else {
-        	$data = Contact::find($id);
+        	$data = Header::find($id);
         	$data->update(['description' => $input['description']]);
-			return Redirect::action('AdminContactController@edit', $id);
+			return Redirect::action('ConfigHeaderController@edit', $id);
         }
 	}
 
@@ -94,13 +94,13 @@ class AdminContactController extends AdminController {
 	// public function destroy($id)
 	// {
 	// 	Customer::find($id)->delete();
- //        return Redirect::action('AdminContactController@feedback');
+ //        return Redirect::action('ConfigHeaderController@feedback');
 	// }
 
 	// public function feedback()
 	// {
 	// 	$data = Customer::orderBy('id', 'desc')->paginate(PAGINATE);
-	// 	return View::make('admin.contact.index')->with(compact('data'));
+	// 	return View::make('admin.header.index')->with(compact('data'));
 	// }
 
 }
