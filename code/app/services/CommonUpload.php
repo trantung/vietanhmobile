@@ -30,5 +30,17 @@ class CommonUpload
 		}
 
 	}
+	public static function uploadFile($input, $path){
+		if (Input::hasFile('linkFile'))
+			{
+				$pathUpload =  $path  ;
+			    $file = Input::file('linkFile');
+				dd($file);			    
+			    Input::file('linkFile')->move(''.$pathUpload.'/%s' ,'images/user');
+			    // $file->move(''.$pathUpload.'/%s' , $file->getClientOriginalName());
+		 
+			    $image = Image::make(sprintf($pathUpload, $file->getClientOriginalName()))->save();
+			}
+	}
 
 }

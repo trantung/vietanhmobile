@@ -84,3 +84,8 @@ define('IMAGE_BOTTOM', 3);
 define('LANG_VI', 'vi');
 define('LANG_EN', 'en');
 define('RECORDS', 5);
+//type menu on product
+define('TYPEMENU', 1);
+define('TYPEPRODUCT', 2);
+//upload category
+define('UPLOAD_CATEGORY', '/category');
