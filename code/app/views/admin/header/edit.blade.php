@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Sửa Contact' }}
+{{ $title='Sửa Header' }}
 @stop
 
 @section('content')
@@ -10,7 +10,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('AdminContactController@update', $id), 'method' => 'PUT')) }}
+			{{ Form::open(array('action' => array('ConfigHeaderController@update', $id), 'method' => 'PUT')) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Chi tiết</label>

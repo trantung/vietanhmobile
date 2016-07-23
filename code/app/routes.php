@@ -24,7 +24,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::get('/feedback', 'AdminContactController@feedback');
 
-	Route::resource('/contact', 'AdminContactController');
+	Route::resource('/config/footer', 'AdminContactController');
+
+	Route::resource('/config/header', 'ConfigHeaderController');
 
 	Route::resource('/bottomtext', 'BottomTextController');
 
@@ -44,11 +46,12 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/type_about_us', 'AdminTypeAboutController');
 
 	Route::resource('/category', 'TypeProductController');
+	// Route::resource('/contact', 'AdminContactController');
 
 });
 Route::resource('/san-pham', 'CategoryController');
-
+Route::get('/tim-kiem', 'SearchController@search');
 Route::get('/{id}',  'SiteController@show');
-Route::get('/', 'SiteController@search');
+// Route::get('/', 'SiteController@search');
 Route::resource('/', 'SiteController');
 

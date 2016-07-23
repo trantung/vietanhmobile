@@ -12,6 +12,7 @@
 			"app/commands",
 			"app/controllers",
 			"app/controllers/admin",
+			"app/controllers/site",
 			"app/services",
 			"app/models",
 			"app/database/migrations",

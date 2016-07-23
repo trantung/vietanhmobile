@@ -7,19 +7,18 @@
 			<div class="search">
 				<div class="home">
 					<a href="{{ action('SiteController@index') }}">
-						<i class="fa fa-home" title="Hoàng Hà Mobile"></i>
+						<i class="fa fa-home"></i>
 					</a>
 				</div>
 				<div class="input">
-					<form action="">
-						<div class="control"><input name="kwd" placeholder="Nhập từ khóa tìm kiếm" autocomplete="off"></div>
+					{{ Form::open(array('action' => 'SearchController@search', 'method' => 'GET')) }}
+						<div class="control"><input name="keyword" placeholder="Nhập từ khóa tìm kiếm" autocomplete="off"></div>
 						<button type="submit"><i class="fa fa-search"></i> Tìm kiếm</button>
-					</form>
+					{{ Form::close() }}
 				</div>
 			</div>
 			<div class="tools-member">
-				<h4>Mở cửa từ 9h - 21h hàng ngày<br>
-				94 Thái Hà: (098.437.3333) - (096.455.3333) </h4>
+				<h4>{{ $header->description }}</h4>
 			</div>
 		</div>
    </div>
