@@ -17,7 +17,7 @@
 		<!-- <script async src="https://e.anthill.vn/delivery-ants/conversion.js"></script> -->
 		
 		{{ HTML::script('assets/js/plusone.js') }}
-		{{ HTML::script('assets/js/scripts.js') }}
+		<!-- {{ HTML::script('assets/js/scripts.js') }} -->
 		{{ HTML::script('assets/js/app.home.min.js') }}
 		{{ HTML::script('assets/js/demo.js') }}
 		{{ HTML::script('assets/js/platform.js') }}

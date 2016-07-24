@@ -13,7 +13,7 @@
                 {
                     console.log("it Work");
                 }
-        	}
+            }
         );
         window.location.reload();
     }

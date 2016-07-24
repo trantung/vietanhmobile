@@ -31,10 +31,14 @@ class AdminSlideController extends AdminController {
 	 */
 	public function store()
 	{
+		$input = Input::all();
 		$input = Input::except('_token', 'image_url');
 		$slideId = AdminSlide::create($input)->id;
-		$inputImg['image_url'] = CommonUpload::uploadImage($slideId, UPLOADIMG, 'image_url',UPLOAD_SLIDE);
-		CommonNormal::update($slideId, ['image_url' => $inputImg['image_url']] );
+		$inputAll = Input::all();
+		$listImage = $inputAll['image_url'];
+		$this->commonImage($inputAll, $slideId);
+
+
 		return Redirect::action('AdminSlideController@index');
 	}
 
@@ -72,12 +76,27 @@ class AdminSlideController extends AdminController {
 	 */
 	public function update($id)
 	{
-		// $input = Input::except('_token', '_method');
-		$inputSlide = Input::except('_token', 'image_url');
-		CommonNormal::update($id,$inputSlide);
-		$imageSlide = AdminSlide::find($id);
-		$input['image_url'] = CommonUpload::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_SLIDE,$imageSlide->image_url);
-		CommonNormal::update($id, ['image_url' => $input['image_url']] );
+		$input = Input::except('_token', '_method');
+		if ($input['image_url'][0]) {
+			Images::where('slide_id', $id)->delete();
+			$this->commonImage($input, $id);
+		}
+		else{
+			$images = $input['image'];
+			if ($images) {
+				foreach ($images as $key => $image) {
+					if ($images[$key]) {
+						$path = UPLOAD_IMAGE_SLIDE;
+						$destinationPath = public_path().'/image'.$path . '/' . $id;
+						$filename = $image->getClientOriginalName();
+						$uploadSuccess   =  $image->move($destinationPath, $filename);
+						Images::find($key)->update(['image_url' => $filename]);
+					}
+				}
+			}
+			
+		}
+		AdminSlide::find($id)->update(Input::except('_token', '_method', 'image_url', 'image'));
 
 		return Redirect::action('AdminSlideController@index');
 	}
@@ -104,5 +123,22 @@ class AdminSlideController extends AdminController {
 	// 	// dd($input);
 	// 	return View::make('admin.slider.index')->with(compact('slides'));
 	// }
-
+	public function commonImage($inputAll, $slideId)
+		{
+			foreach ($inputAll['image_url'] as $key => $value) {
+				if ($value) {
+					$path = UPLOAD_IMAGE_SLIDE;
+					$destinationPath = public_path().'/images' .$path. '/' . $slideId;
+					$filename = $value->getClientOriginalName();
+					$uploadSuccess   =  $value->move($destinationPath, $filename);
+					$adminImage['slide_id'] = $slideId;
+					$adminImage['image_url'] = $filename;
+					$imageRelateId[] = Images::create($adminImage)->id;
+				}
+			}
+		}
+	public function deleteSlide($id)
+	{
+		Images::find($id)->delete();
+	}
 }

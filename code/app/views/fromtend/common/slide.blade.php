@@ -4,9 +4,9 @@
 			<section id="slider1_container" style="height: 471px; width: 100%;" jssor-slider="true">
 				<div id="demo">
 					<div id="owl-demo" class="owl-carousel">
-						<div class="item"><img src="assets/image/fullimage1.jpg" alt="The Last of us"></div>
-						<div class="item"><img src="assets/image/fullimage2.jpg" alt="The Last of us"></div>
-						<div class="item"><img src="assets/image/fullimage3.jpg" alt="The Last of us"></div>
+						@foreach(CommonSite::getSlideHome() as $value)
+						<div class="item"><img src="{{ url(UPLOADIMG.UPLOAD_SLIDE.'/'.$value->slide_id.'/'. $value->image_url) }}" alt="The Last of us"></div>
+						@endforeach
 					</div>
 			</div>
 	<script src="assets/js/jquery-2.1.4.min.js"></script>
@@ -28,7 +28,7 @@
 	  navigation : false,
 	  slideSpeed : 100,
 	  autoPlay: true,
-	  paginationSpeed : 100,
+	  paginationSpeed : 1000,
 	  pagination: true,
 	  singleItem : true,
 

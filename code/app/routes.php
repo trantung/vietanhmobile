@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
 	Route::resource('/news', 'NewsController');
-	
+
 	Route::get('/products/search', 'AdminProductController@search');
 	Route::resource('/products', 'AdminProductController');
 

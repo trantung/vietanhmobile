@@ -180,5 +180,10 @@ class CommonSite
 		$data = Product::whereIn('parent_id', $data)->orderBy('weight_number', 'desc')->skip(1)->take(5)->get();
 		return $data;
 	}
+	public static function getSlideHome()
+	{
+		$data = AdminSlide::where('type', SLIDE_TOP)->first();
+		return $data->images;
+	}
 
 }

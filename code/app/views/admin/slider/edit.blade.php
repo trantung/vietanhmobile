@@ -49,13 +49,25 @@
 						<div class="col-sm-6">
 							<label for="name">Upload ảnh</label>
 							<p>Kích thước: Banner: 1350x500 / đối tác: 250x130 / Dung lượng < 1Mb</p>
-							{{ Form::file('image_url') }}
-							<img src="{{ url(UPLOADIMG . UPLOAD_SLIDE . '/' . $slide->id . '/' . $slide->image_url) }}" width="200px" height="auto"  />
+							{{ Form::file('image_url[]', array('id' => 'image_url', 'multiple' => true)) }}
 						</div>
 					</div>
 					<div>
 				</div>
-
+				<div class="form-group">
+					@foreach($slide->images as $key => $image)
+						<label for="name">Image thứ {{$key + 1}}</label>
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="name">Đổi ảnh</label>
+								{{ Form::file('image[' .$image->id. ']', array('id' => 'image_url')) }}
+								<img src="{{ url('/images'.UPLOAD_IMAGE_SLIDE . '/' . $slide->id . '/' . $image->image_url) }}" ,width="100px", height="100px"  />
+		                    	<a href="javascript:;" onclick="deleteImageRelate()" data-id="{{ $image->id }}" class="image_relate btn btn-danger">Xoá</a>
+							</div>
+						</div>
+						<div>
+	                @endforeach
+				</div>
 			  <div class="box-footer">
 				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
 			  </div>
