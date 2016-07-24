@@ -143,7 +143,7 @@ class CommonSite
 		return $data;
 	}
 	public static function getCategoryById($id){
-		$data = Product::whereNull('parent_id')->where('id', $id)->get();
+		$data = Product::where('id', $id)->get();
 		return $data;
 	}
 	public static function getSubCategory($id)
@@ -152,13 +152,19 @@ class CommonSite
 	}
 	public static function getProduct($id, $i)
 	{
-		$data = Product::where('parent_id', $id)->lists('id');
-		$data = Product::whereIn('parent_id', $data)->orderBy('weight_number', 'desc')->orderBy('id', 'desc')->skip($i* RECORDS)->take(RECORDS)->get();
+		$listID = Product::where('parent_id', $id)->lists('id');
+		$data = Product::whereIn('parent_id', $listID)->orderBy('weight_number', 'desc')->orderBy('id', 'desc')->skip($i* RECORDS)->take(RECORDS)->get();
+		if(count($data) == 0)
+		{
+			$data = Product::whereIn('id', $listID)->orderBy('weight_number', 'desc')->orderBy('id', 'desc')->skip($i* RECORDS)->take(RECORDS)->get();
+		}
 		return $data;
 	}
 	public static function countPageProduct($id){
 		$listID = Product::where('parent_id', $id)->lists('id');
 		$data = count(Product::whereIn('parent_id', $listID)->orderBy('id', 'desc')->get());
+		if($data == 0)
+			$data = count(Product::whereIn('id', $listID)->orderBy('id', 'desc')->get());
 		$ketqua = ceil($data / RECORDS);
 		return $ketqua;
 	}
