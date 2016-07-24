@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Thêm mới thể loại tin' }}
+{{ $title='Thêm mới thể loại ' }}
 @stop
 
 @section('content')
@@ -35,7 +35,7 @@
 						   {{ Form::text('name', null , textParentCategory('Tên thể loại sản phẩm')) }}
 						</div>
 					</div>
-					<label for="name">Mô tả ngắ	n</label>
+					<label for="name">Mô tả ngắn</label>
 					<div class="row">
 						<div class="col-sm-6">
 						   {{ Form::text('short_des', null , textParentCategory('Mô tả ngắn')) }}

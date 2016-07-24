@@ -5,17 +5,15 @@
 @stop
 
 @section('content')
-@include('admin.news.search')
+@include('admin.products.search')
 <!-- inclue Search form
 
 -->
-@if(!Admin::isSeo())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminProductController@create') }}" class="btn btn-primary">Thêm mới sản phẩm</a>
 	</div>
 </div>
-@endif
 <div class="row">
 	<div class="col-xs-12">
 	  <div class="box">
@@ -30,6 +28,7 @@
 			  <th>Tên sản phẩm</th>
 			  <th>Hãng sản xuất</th>
 			  <th>Giá tiền</th>
+			  <th>Ảnh</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
 				@foreach($data as $value)
@@ -38,6 +37,9 @@
 						<td>{{ $value->name }}</td>
 						<td>{{ CommonSite::getCategoryNameByproduct($value->id)->name }}</td>
 						<td>{{ $value->price }}</td>
+						<td>
+						<img src="{{ url(UPLOADIMG.'/'.UPLOAD_PRODUCT.'/'.$value->id.'/'. $value->image_url) }}" width="150px" height="100px">
+						</td>
 						<td>
 							<a href="{{  action('AdminProductController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 								{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminProductController@destroy', $value->id), 'style' => 'display: inline-block;')) }}

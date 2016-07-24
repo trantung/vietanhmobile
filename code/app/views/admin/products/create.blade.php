@@ -26,50 +26,39 @@
 						<label for="name">Category</label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{  Form::select('type_new_id', Common::getTypeList('TypeNew'), null, array('class' => 'form-control' )) }}
+							   {{  Form::select('parent_id', CommonOption::getOptionSub('Product'), null, array('class' => 'form-control' )) }}
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name">Trạng thái</label>
+						<label for="title">Ảnh sản phẩm</label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{ Form::select('status', [ 2=> 'Hiển thị', 1=> 'Không hiển thị'], null, array('class' => 'form-control')) }}
+							   	{{ Form::file('image_url') }}
 							</div>
 						</div>
 					</div>
-					<label for="name">Giá</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{ Form::text('price', null , textParentCategory('Giá sản phẩm')) }}
-						</div>
-					</div>
-					<label for="name">Số lượng</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{ Form::text('quantity', null , textParentCategory('Số lượng')) }}
-						</div>
-					</div>
-					<label for="name">Vị trí sắp xếp</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{ Form::text('position', null , textParentCategory('Vị trí sắp xếp(số nguyên dương)')) }}
-						</div>
-					</div>
 					<div class="form-group">
-						<label for="image_url">Upload ảnh sản phẩm</label>
-						<p>Kích thước: 360x230 / Dung lượng < 1Mb</p>
+						<label for="title">Giá</label>
 						<div class="row">
 							<div class="col-sm-6">
-								{{ Form::file('image_url') }}
+							   {{ Form::text('price', null , textParentCategory('Giá sản phẩm')) }}
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="description">Giới thiệu ngắn</label>
+						<label for="title">Vị trí hiển thị</label>
 						<div class="row">
-							<div class="col-sm-12">
-							   {{ Form::textarea('short_des', '' , array('class' => 'form-control',"rows"=>6)) }}
+							<div class="col-sm-6">
+							   {{ Form::text('weight_number', null , textParentCategory('Vị trí hiển thị')) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="title">Mô tả ngắn</label>
+						<div class="row">
+							<div class="col-sm-6">
+							  {{ Form::textarea('short_des', '' , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
 							</div>
 						</div>
 					</div>
@@ -77,11 +66,10 @@
 						<label for="description">Chi tiết</label>
 						<div class="row">
 							<div class="col-sm-12">
-							   {{ Form::textarea('description', '' , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
+							   {{ Form::textarea('description', '' , array('class' => 'form-control',"rows"=>6, 'id' => 'editor2')) }}
 							</div>
 						</div>
 					</div>
-
 					<!-- /.box-body -->
 
 					<div class="box-footer">

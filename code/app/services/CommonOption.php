@@ -4,15 +4,28 @@ class CommonOption {
 	public static function getOption($model)
 	{
 		$array = array(
-			0 => 'Parent',
+			0 => 'Thư mục cha',
 		);
 		return $array + self::childOption($model);
+	}
+	public static function getOptionSub($model)
+	{
+		$array = array(
+			0 => 'Thư mục cha',
+		);
+		return $array + self::childOptionandSub($model);
 	}
 	public static function parentOption($model)
 	{
 		return $model::whereNull('parent_id')->where('typemenu', TYPEMENU)->lists('name', 'id');
 	}
 	public static function childOption($model)
+	{
+		$parents = self::parentOption($model);
+		
+		return $parents  ;
+	}
+	public static function childOptionandSub($model)
 	{
 		$parents = self::parentOption($model);
 		$child = $model::whereNotNull('parent_id')->where('typemenu', TYPEMENU)->lists('name', 'id');

@@ -29,7 +29,7 @@
 												</div>
 											</a>
 											<div class="mosaic-backdrop" style="display: block;">
-												<img width="219" alt="{{ $item->name }}" height="170" src="{{ $item->image_url }}">
+												<img width="219" alt="{{ $item->name }}" height="170" src="{{ url(UPLOADIMG.'/'.UPLOAD_PRODUCT.'/'.$item->id.'/'.$item->image_url) }}">
 											</div>
 										</div>
 										<div class="product-name">

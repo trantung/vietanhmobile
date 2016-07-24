@@ -75,7 +75,8 @@ class TypeProductController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$data = Product::find($id);
+		return View::make('admin.category.edit')->with(compact('data'));
 	}
 
 
@@ -87,7 +88,30 @@ class TypeProductController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$rules = array(
+			'name' => 'required',
+		);
+		$input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('TypeProductController@edit', $id)
+	            ->withErrors($validator);
+        }else{
+        	if($input['image_url'] != null)
+        	{
+        		$input['image_url'] = CommonUpload::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_CATEGORY);        		
+        	}else
+        	{
+				$input['image_url'] = Product::find($id)->image_url;
+        	}
+        	if($input['parent_id'] == 0)
+        	{
+        		$input['parent_id'] = null;
+        	}
+        	CommonNormal::update($id, $input);
+        	return Redirect::action('TypeProductController@index');
+
+        }
 	}
 
 

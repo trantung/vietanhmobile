@@ -6,7 +6,7 @@
 				<!-- <i class="fa fa-bars"></i>  -->
 				<img src="../assets/image/iconmenu.png" style="float: left;margin-top: -6px;height=30px;width: 30px;">
 				<span>Danh mục sản phẩm</span></a></div>
-				<div class="nav-items" id="showMenu" style="display: block;">
+				<div class="nav-items" id="showMenu" style="display: none;">
 					<ul>
 					@foreach(CommonSite::getCategory() as $value)
 						<li data-submenu-id="menu_5">
@@ -35,7 +35,7 @@
 									</ul>
 									@if($value->image_url)
 										<div class="ads">
-											<img src="{{ $value->image_url }}">
+											<img src="{{ url(UPLOADIMG.'/'.UPLOAD_CATEGORY.'/'.$value->id.'/'. $value->image_url) }}">
 										</div>
 									@endif
 								</div>

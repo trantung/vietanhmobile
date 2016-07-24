@@ -9,5 +9,7 @@
 @include('fromtend.common.slide');			
 @include('fromtend.common.product');
 
-
+<script>
+	$('#showMenu').css('display','block')
+</script>
 @stop

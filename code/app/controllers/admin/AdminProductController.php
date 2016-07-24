@@ -17,8 +17,8 @@ class AdminProductController extends AdminController {
 	{
 		$input = Input::all();
 		// dd($input);
-		$inputNew = NewsManager::searchNews($input);
-		return View::make('admin.products.index')->with(compact('inputNew', 'input'));
+		$data = CommonProduct::searchProduct($input);
+		return View::make('admin.products.index')->with(compact('data'));
 	}
 
 	/**
@@ -41,47 +41,26 @@ class AdminProductController extends AdminController {
 	{
 		$rules = array(
 			'name'   => 'required',
-			'position' => 'integer|min:1'
+			'weight_number' => 'numeric',
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
 			return Redirect::action('AdminProductController@create')
-	            ->withErrors($validator)
-	            ->withInput(Input::except('name'));
-        } else {
+				->withErrors($validator)
+				->withInput(Input::except('name'));
+		} else {
 
-        	$viInputNews = Input::only('type_new_id', 'name', 'description');
-			$viId = CommonNormal::create($viInputNews);
-
-			$enInput['name'] = Input::get('en_name');
-			$enInput['description'] = Input::get('en_description');
-			$typeNewIdRelate = Common::getValueLanguage('TypeNew', Input::get('type_new_id'), 'relate_id');
-			$enInput['type_new_id'] = $typeNewIdRelate;
-			$enId = CommonNormal::create($enInput);
-
-			//upload image new
-			$inputImg['image_url'] = CommonUpload::uploadImage($viId, UPLOADIMG, 'image_url',UPLOAD_NEWS);
-			CommonNormal::update($viId, ['image_url' => $inputImg['image_url']] );
-			CommonNormal::update($enId, ['image_url' => $inputImg['image_url']] );
-
-			$language['model_name'] = 'AdminNew';
-			$language['relate_name'] = 'AdminNew';
-			$language['model_id'] = $viId;
-			$language['relate_id'] = $enId;
-			$language['status'] = Input::get('status');
-			if(!empty(Input::get('position'))) {
-				$language['position'] = Input::get('position');
-			} else {
-				$language['position'] = 1;
+			$input['typemenu'] = TYPEPRODUCT;
+			if($input['parent_id'] == 0)
+			{
+				return Redirect::action('AdminProductController@create')->with('error', 'Phải chọn thể loại category');
 			}
-			AdminLanguage::create($language);
-
-			// insert ceo
-			// CommonUpload::createSeo('AdminNew', $id, FOLDER_SEO_NEWS);
-
+			$id =CommonNormal::create($input);
+			$input['image_url'] = CommonUpload::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_PRODUCT);
+			CommonNormal::update($id, ['image_url' => $input['image_url']] );
 			return Redirect::action('AdminProductController@index');
-        }
+		}
 	}
 
 
@@ -105,10 +84,8 @@ class AdminProductController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		return View::make('admin.products.edit')->with(compact('id'));
-		// $inputNew = AdminNew::find($id);
-		// $inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'AdminNew')->first();
-		// return View::make('admin.products.edit')->with(compact('inputNew','inputSeo'));
+		$data = Product::find($id);
+		return View::make('admin.products.edit')->with(compact('data'));
 	}
 
 
@@ -120,36 +97,31 @@ class AdminProductController extends AdminController {
 	 */
 	public function update($id)
 	{
-		if(!Admin::isSeo()){
 			$rules = array(
 				'name'   => 'required',
-				// 'en_name' => 'required'
+				'weight_number' => 'numeric',
 			);
 			$input = Input::except('_token');
 			$validator = Validator::make($input,$rules);
 			if($validator->fails()) {
 				return Redirect::action('AdminProductController@edit',$id)
-		            ->withErrors($validator)
-		            ->withInput(Input::except('name'));
-	        } else {
+					->withErrors($validator)
+					->withInput(Input::except('name'));
+			} else {
 
-		        	$inputNews = Input::only('type_new_id', 'name', 'description');
-		        	$relateUpdateId = Common::getValueLanguage('AdminNew', $id, 'relate_id');
-		        	$inputUpdateRelate['name'] = $input['en_name'];
-		        	$inputUpdateRelate['description'] = $input['en_description'];
-		        	$inputUpdateRelate['type_new_id'] = Common::getValueLanguage('TypeNew', Input::get('type_new_id'), 'relate_id');
-		        	CommonNormal::update($id,$inputNews);
-		        	CommonNormal::update($relateUpdateId,$inputUpdateRelate);
-		        	$inputLanguage = Input::only('position', 'status');
-		        	AdminLanguage::where('model_name', 'AdminNew')->where('model_id', $id)->where('relate_id', $relateUpdateId)->update($inputLanguage);
-
-					//update upload image
-					$imageNews = AdminNew::find($id);
-					$input['image_url'] = CommonUpload::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS,$imageNews->image_url);
-					CommonNormal::update($id, ['image_url' => $input['image_url']] );
-					CommonNormal::update($relateUpdateId, ['image_url' => $input['image_url']] );
+					if($input['image_url'] != null)
+					{
+						$input['image_url'] = CommonUpload::uploadImage($id, UPLOADIMG, 'image_url', UPLOAD_PRODUCT);	
+					} else {
+						$input['image_url'] = Product::find($id)->image_url;
+					}
+					if($input['parent_id'] == 0)
+					{
+						return Redirect::action('AdminProductController@edit', $id)->with('error', 'Phải chọn thể loại category');
+					}
+					
+					CommonNormal::update($id, $input);
 				}
-        	}
 
 			return Redirect::action('AdminProductController@index') ;
 
@@ -164,7 +136,7 @@ class AdminProductController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		Common::deleteLanguage($id, 'AdminNew');
+		CommonNormal::delete($id);
 		return Redirect::action('AdminProductController@index') ;
 	}
 

@@ -1,87 +1,76 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Sửa tin' }}
+{{ $title='Cập nhật sản phẩm' }}
 @stop
 
 @section('content')
 
-@include('admin.news.common')
+@include('admin.products.common')
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('NewsController@update', $id), 'method' => 'PUT', 'files' => true)) }}
+			{{ Form::open(array('action' => array('AdminProductController@update',$data->id), 'method' => 'PUT', 'files' => true)) }}
 				<div class="box-body">
 					<div class="form-group">
-						<label for="title">Tiêu đề Vietnamese</label>
+						<label for="title">Tên sản phẩm</label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{ Form::text('name', Common::objectLanguage('AdminNew', $id, 'vi')->name , textParentCategory('Tiêu đề VietNamese')) }}
-							</div>
-						</div>
-						<label for="title">Tiêu đề English</label>
-						<div class="row">
-							<div class="col-sm-6">
-							   {{ Form::text('en_name', Common::objectLanguage('AdminNew', $id, 'en')->name , textParentCategory('Tiêu đề English')) }}
+							   {{ Form::text('name', $data->name , textParentCategory('Tên sản phẩm')) }}
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name">Thể loại tin</label>
+						<label for="name">Category</label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{  Form::select('type_new_id', Common::getTypeList('TypeNew'), AdminNew::find($id)->type_new_id, array('class' => 'form-control' )) }}
+							   {{  Form::select('parent_id', CommonOption::getOptionSub('Product'), $data->parent_id, array('class' => 'form-control' )) }}
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name">Trạng thái</label>
+						<label for="title">Ảnh sản phẩm</label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{ Form::select('status', [ 2=> 'Hiển thị', 1=> 'Không hiển thị'], Common::getValueLanguage('AdminNew', $id, 'status'), array('class' => 'form-control')) }}
-							</div>
-						</div>
-					</div>
-					<label for="name">Vị trí sắp xếp</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{ Form::text('position', Common::getValueLanguage('AdminNew', $id, 'position'), textParentCategory('Vị trí sắp xếp(số nguyên dương)')) }}
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="image_url">Upload ảnh tin</label>
-						<p>Kích thước: 360x230 / Dung lượng < 1Mb</p>
-						<div class="row">
-							<div class="col-sm-6">
-								@if(Admin::isSeo())
-									{{ Form::file('image_url', array('disabled' => 'true' )) }}
-									<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $id . '/' . Common::objectLanguage('AdminNew', $id, 'vi')->image_url) }}" />
-								@else
-									{{ Form::file('image_url') }}
-									<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $id . '/' . Common::objectLanguage('AdminNew', $id, 'vi')->image_url) }}" />
-								@endif
+								<img src="{{ url(UPLOADIMG.'/'.UPLOAD_PRODUCT.'/'.$data->id.'/'. $data->image_url) }}">
+							   	{{ Form::file('image_url') }}
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="description">Nội dung tin Vietnamese</label>
+						<label for="title">Giá</label>
+						<div class="row">
+							<div class="col-sm-6">
+							   {{ Form::text('price', $data->price , textParentCategory('Giá sản phẩm')) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="title">Vị trí hiển thị</label>
+						<div class="row">
+							<div class="col-sm-6">
+							   {{ Form::text('weight_number', $data->weight_number , textParentCategory('Vị trí hiển thị')) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="title">Mô tả ngắn</label>
+						<div class="row">
+							<div class="col-sm-6">
+							  {{ Form::textarea('short_des', $data->short_des , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="description">Chi tiết</label>
 						<div class="row">
 							<div class="col-sm-12">
-							   {{ Form::textarea('description', Common::objectLanguage('AdminNew', $id, 'vi')->description , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
+							   {{ Form::textarea('description', $data->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor2')) }}
 							</div>
 						</div>
 					</div>
-					<div>
-						<label for="description">Nội dung tin English</label>
-						<div class="row">
-							<div class="col-sm-12">
-							   {{ Form::textarea('en_description', Common::objectLanguage('AdminNew', $id, 'en')->description , array('class' => 'form-control',"rows"=>6, 'id' => 'editor2')) }}
-							</div>
-						</div>
-					</div>
-
 					<!-- /.box-body -->
 
 					<div class="box-footer">
