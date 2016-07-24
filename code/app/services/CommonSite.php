@@ -183,7 +183,9 @@ class CommonSite
 	public static function getSlideHome()
 	{
 		$data = AdminSlide::where('type', SLIDE_TOP)->first();
-		return $data->images;
+		if($data)
+			return $data->images;
+		return array();
 	}
 
 }
