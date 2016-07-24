@@ -26,8 +26,8 @@
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>Loại sản phẩm</th>
-			  <th>Sub category</th>
+			  <th>Hãng sản phẩm</th>
+			  <th>Dòng sản phẩm</th>
 			  <th>Mô tả ngắn</th>
 			  <th style="width:200px;">Action</th>
 			</tr>

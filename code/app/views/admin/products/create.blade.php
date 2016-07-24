@@ -23,10 +23,10 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name">Category</label>
+						<label for="name">Dòng sản phẩm</label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{  Form::select('parent_id', CommonOption::getOptionSub('Product'), null, array('class' => 'form-control' )) }}
+							   {{  Form::select('parent_id', CommonOption::getOptionCreateProduct('Product'), null, array('class' => 'form-control' )) }}
 							</div>
 						</div>
 					</div>

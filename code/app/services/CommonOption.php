@@ -15,6 +15,21 @@ class CommonOption {
 		);
 		return $array + self::childOptionandSub($model);
 	}
+	public static function getOptionCreateProduct($model)
+	{
+		
+		$child = $model::whereNotNull('parent_id')->where('typemenu', TYPEMENU)->lists('name', 'id');
+		foreach ($child as $key => $value) {
+			$parentId = $model::find($key)->parent_id;
+			if($parentId) {
+				$child[$key] = $model::find($parentId)->name . '-' . $value;
+			}
+			else {
+				dd('sai');
+			}
+		}
+		return $child;
+	}
 	public static function parentOption($model)
 	{
 		return $model::whereNull('parent_id')->where('typemenu', TYPEMENU)->lists('name', 'id');
