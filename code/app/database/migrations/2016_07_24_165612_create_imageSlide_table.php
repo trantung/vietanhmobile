@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateImageSlideTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('images', function(Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 256)->nullable();
+            $table->integer('slide_id')->nullable();
+            $table->text('image_url', 256)->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('images');
+	}
+
+}

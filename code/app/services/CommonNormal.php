@@ -63,6 +63,9 @@ class CommonNormal
 		{
 			return 'Product';
 		}
-
+		if($name == 'products')
+		{
+			return 'Product';
+		}
 	}
 }

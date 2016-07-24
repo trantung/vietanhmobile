@@ -16,7 +16,7 @@
 			<div class="head-content">
 				<div class="left">
 					<div id="slider1_container" style="position:relative;width:720px;height:500px;overflow:hidden" jssor-slider="true">
-						<img src="{{ $data->image_url}}"/>
+					<img src="{{ url(UPLOADIMG.'/'.UPLOAD_PRODUCT.'/'.$data->id.'/'. $data->image_url) }}">
 					</div>
 				</div>
 				<div class="right" style="background-color: #FFFFCC;">
@@ -46,24 +46,15 @@
 						</div>
 					</div>
 					<div class="block">
-						<h4><strong>Khuyến mại</strong></h4>
 						<ul class="ltsPromote">
-							<li>
-								<i class="fa fa-gift"></i>
-								Hỗ trợ mua sạc dự phòng Pisen Portable Power 10000 mAh - Chính hãng với giá 350.000 vnđ
-							</li>
-							<li>
-								<i class="fa fa-gift"></i>
-								<a href="/tim-kiem.html?filters=71:5027">Tặng ngay 1.700.000 VNĐ tiền mặt</a></li>
+							{{ $data->short_des }}
 						</ul>
 					</div>
 				</div>
-				<div class="share-hotline">
-					<p class="hotline">Hotline bán hàng Online: <strong>19002091 - nhánh số 1 / 0946.56.26.46 / 0963.006.222.</strong></p>
-				</div>
+			
 			</div>
 			<div class="mid-content">
-				<div class="left">
+				<!-- <div class="left">
 					<div class="info">
 						<div class="product-video" id="productVideo">
 							<h3>
@@ -116,33 +107,25 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<div class="content"> 
 				<p><span style="font-size: medium;">&nbsp;</span></p>
 				<div class="left">
 					<div class="block">
 						<div class="head-block">
-							<h4><strong>Sản phẩm HOT</strong></h4>
+							<h4><strong>Sản phẩm HOT cùng hãng</strong></h4>
 						</div>
 						<ul class="other-device">
+							@foreach(CommonSite::getTopProductDetail(CommonSite::getCategoryNameByproduct($data->id)->id) as $value)
 							<li>
-								<a class="img" href="/huawei-y5ii-y5-2-chinh-hang-troi-bao-hanh-p8059.html"><img src="https://hoanghamobile.com/Uploads/Originals/2016/06/13/201606131054439549_hw_475129.jpg?mod=pad&amp;width=65&amp;height=65&amp;crop=auto"></a>
-								<p class="name"><a href="/huawei-y5ii-y5-2-chinh-hang-troi-bao-hanh-p8059.html">Huawei Y5II (Y5 2) - Chính hãng - Trôi bảo hành</a> <span class="compare">(<a title="So sánh Samsung Galaxy S7 - G930FD - Chính hãng với Huawei Y5II (Y5 2) - Chính hãng - Trôi bảo hành" href="so-sanh-samsung-galaxy-s7-g930fd-chinh-hang-voi-huawei-y5ii-y5-2-chinh-hang-troi-bao-hanh-ss5475.8059.html">So sánh</a>)</span></p>
-								<p class="price">1.690.000 ₫</p>
-							</li>
-							<li>
-								<a class="img" href="/xiaomi-mi-4-lte-fpt-ram-2gb-troi-bao-hanh-p8058.html">
-									<img src="https://hoanghamobile.com/Uploads/Originals/2016/06/23/201606232254036496_Untitled-1.jpg?mod=pad&amp;width=65&amp;height=65&amp;crop=auto">
+								<a class="img" href="{{ action('SiteController@show', $value->id) }}">
+									<img src="{{ url(UPLOADIMG.'/'.UPLOAD_PRODUCT.'/'.$value->id.'/'. $value->image_url) }}">
 								</a>
-								<p class="name"><a href="/xiaomi-mi-4-lte-fpt-ram-2gb-troi-bao-hanh-p8058.html">Xiaomi Mi 4 - LTE - FPT - RAM 2GB - Trôi bảo hành</a> <span class="compare">(<a title="So sánh Samsung Galaxy S7 - G930FD - Chính hãng với Xiaomi Mi 4 - LTE - FPT - RAM 2GB - Trôi bảo hành" href="so-sanh-samsung-galaxy-s7-g930fd-chinh-hang-voi-xiaomi-mi-4-lte-fpt-ram-2gb-troi-bao-hanh-ss5475.8058.html">So sánh</a>)</span></p>
-								<p class="price">2.350.000 ₫</p>
+								<p class="name"><a href="{{ action('SiteController@show', $value->id) }}">{{ $value->name}}</a> </p>
+								<p class="price">{{$value->price}}</p>
 							</li>
-							<li>
-								<a class="img" href="/xiaomi-redmi-3x-32gb-p8055.html"><img src="https://hoanghamobile.com/Uploads/Originals/2016/07/15/201607151650346068_redmi-3x.jpg?mod=pad&amp;width=65&amp;height=65&amp;crop=auto"></a>
-								<p class="name"><a href="/xiaomi-redmi-3x-32gb-p8055.html">Xiaomi Redmi 3X - 32GB</a> <span class="compare">(<a title="So sánh Samsung Galaxy S7 - G930FD - Chính hãng với Xiaomi Redmi 3X - 32GB" href="so-sanh-samsung-galaxy-s7-g930fd-chinh-hang-voi-xiaomi-redmi-3x-32gb-ss5475.8055.html">So sánh</a>)</span></p>
-								<p class="price">2.990.000 ₫</p>
-							</li>
+							@endforeach
 						</ul>
 					</div>
 				</div>

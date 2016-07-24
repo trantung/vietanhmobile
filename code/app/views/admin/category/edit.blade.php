@@ -1,42 +1,51 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Thêm mới thể loại tin' }}
+{{ $title='Cập nhật thể loại' }}
 @stop
 
 @section('content')
 
-@include('admin.typenew.common')
+<div class="row margin-bottom">
+	<div class="col-xs-12">
+		<a href="{{ action('TypeProductController@index') }} " class="btn btn-success">Danh sách</a>
+	</div>
+</div>
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('NewsTypeController@update', $id), 'method' => 'PUT')) }}
+			{{ Form::open(array('action' => array('TypeProductController@update',$data->id), 'method' => 'PUT', 'files' => true)) }}
+			<div class="box-body">
+					<div class="form-group">
+						<label>Parent</label>
+						<div class="row">
+							<div class="col-sm-6">
+								{{ Form::select('parent_id', CommonOption::getOption('Product'), $data->parent_id, array('class' => 'form-control')) }}
+							</div>
+						</div>
+					</div>
+				</div>
 			<div class="box-body">
 				<div class="form-group">
-					<label for="name">Tên thể loại Vietnamese</label>
+					<label for="name">Tên loại</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{ Form::text('name', Common::objectLanguage('TypeNew', $id, 'vi')->name, textParentCategory('Tên thể loại Vietnamese')) }}
+						   {{ Form::text('name', $data->name , textParentCategory('Tên thể loại sản phẩm')) }}
 						</div>
 					</div>
-					<label for="name">Tên thể loại English</label>
+					<label for="name">Mô tả ngắn</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{ Form::text('en_name', Common::objectLanguage('TypeNew', $id, 'en')->name, textParentCategory('Tên thể loại English')) }}
+						   {{ Form::text('short_des', $data->short_des , textParentCategory('Mô tả ngắn')) }}
 						</div>
 					</div>
-					<label for="name">Vị trí sắp xếp</label>
+					<label for="name">Ảnh đại diện</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{ Form::text('position', Common::getValueLanguage('TypeNew', $id, 'position'), textParentCategory('Vị trí sắp xếp(số nguyên dương)')) }}
-						</div>
-					</div>
-					<label for="name">Vị trí hiển thị</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{ Form::select('status', [ 1=> 'Không xuất hiện ở content', 2=> 'Xuất hiện ở content'], Common::getValueLanguage('TypeNew', $id, 'status'), array('class' => 'form-control')) }}
+							<img src="{{ url(UPLOADIMG.'/'.UPLOAD_CATEGORY.'/'.$data->id.'/'. $data->image_url) }}">
+						   	{{ Form::file('image_url') }}
 						</div>
 					</div>
 				</div>

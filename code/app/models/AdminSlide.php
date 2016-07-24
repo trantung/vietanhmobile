@@ -10,5 +10,8 @@ class AdminSlide extends Eloquent
     protected $table = 'slide';
     protected $fillable = ['name', 'description', 'link', 'type', 'image_url'];
     protected $dates = ['deleted_at'];
-
+	public function images()
+	    {
+	        return $this->hasMany('images', 'slide_id', 'id');
+	    }
 }

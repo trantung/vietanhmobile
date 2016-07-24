@@ -153,7 +153,7 @@ class CommonSite
 	public static function getProduct($id, $i)
 	{
 		$data = Product::where('parent_id', $id)->lists('id');
-		$data = Product::whereIn('parent_id', $data)->orderBy('id', 'desc')->skip($i* RECORDS)->take(RECORDS)->get();
+		$data = Product::whereIn('parent_id', $data)->orderBy('weight_number', 'desc')->orderBy('id', 'desc')->skip($i* RECORDS)->take(RECORDS)->get();
 		return $data;
 	}
 	public static function countPageProduct($id){
@@ -173,6 +173,17 @@ class CommonSite
 			return $data;
 		}
 
+	}
+	public static function getTopProductDetail($id)
+	{
+		$data = Product::where('parent_id', $id)->lists('id');
+		$data = Product::whereIn('parent_id', $data)->orderBy('weight_number', 'desc')->skip(1)->take(5)->get();
+		return $data;
+	}
+	public static function getSlideHome()
+	{
+		$data = AdminSlide::where('type', SLIDE_TOP)->first();
+		return $data->images;
 	}
 
 }

@@ -6,8 +6,10 @@
 		</div>
 		<div class="product-list">
 			<div class="list-content">
+			@for($i = 0; $i< ceil(count($data) / RECORDS); $i++)
 				<div class="row-item">
-					@foreach($data as $item)
+					@foreach($data as $key => $item)
+					@if( $key < RECORDS)
 						<div class="list-item">
 							<div class="box-border">
 								<div class="mosaic-block">
@@ -19,7 +21,7 @@
 										</div>
 									</a>
 									<div class="mosaic-backdrop" style="display: block;">
-										<img width="219" alt="{{ $item->name }}" height="170" src="{{ $item->image_url }}">
+										<img width="219" alt="{{ $item->name }}" height="170" src="{{ url(UPLOADIMG.'/'.UPLOAD_PRODUCT.'/'.$item->id.'/'. $item->image_url) }}">
 									</div>
 								</div>
 								<div class="product-name">
@@ -28,8 +30,10 @@
 							</div>
 							<div class="product-price">{{ $item->price }}</div>
 						</div>
+						@endif
 					@endforeach
 				</div>
+				@endfor
 			</div>
 		</div>
 	</div>

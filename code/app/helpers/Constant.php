@@ -89,3 +89,4 @@ define('TYPEMENU', 1);
 define('TYPEPRODUCT', 2);
 //upload category
 define('UPLOAD_CATEGORY', '/category');
+define('UPLOAD_PRODUCT', '/product');

@@ -35,7 +35,7 @@
 									</ul>
 									@if($value->image_url)
 										<div class="ads">
-											<img src="{{ $value->image_url }}">
+											<img src="{{ url(UPLOADIMG.'/'.UPLOAD_CATEGORY.'/'.$value->id.'/'. $value->image_url) }}">
 										</div>
 									@endif
 								</div>
