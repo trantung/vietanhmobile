@@ -19,7 +19,7 @@
 			{{ Form::open(array('action' => array('TypeProductController@store'), 'files'=> true)) }}
 			<div class="box-body">
 					<div class="form-group">
-						<label>Parent</label>
+						<label>Category</label>
 						<div class="row">
 							<div class="col-sm-6">
 								{{ Form::select('parent_id', CommonOption::getOption('Product'), null, array('class' => 'form-control')) }}
@@ -35,7 +35,7 @@
 						   {{ Form::text('name', null , textParentCategory('Tên thể loại sản phẩm')) }}
 						</div>
 					</div>
-					<label for="name">Mô tả ngắ	n</label>
+					<label for="name">Mô tả ngắn</label>
 					<div class="row">
 						<div class="col-sm-6">
 						   {{ Form::text('short_des', null , textParentCategory('Mô tả ngắn')) }}
