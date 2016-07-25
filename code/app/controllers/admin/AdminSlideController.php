@@ -33,6 +33,7 @@ class AdminSlideController extends AdminController {
 	{
 		$input = Input::all();
 		$input = Input::except('_token', 'image_url');
+		$input['type'] = SLIDE_TOP;
 		$slideId = AdminSlide::create($input)->id;
 		$inputAll = Input::all();
 		$listImage = $inputAll['image_url'];
@@ -77,6 +78,7 @@ class AdminSlideController extends AdminController {
 	public function update($id)
 	{
 		$input = Input::except('_token', '_method');
+		$input['type'] = SLIDE_TOP;
 		if ($input['image_url'][0]) {
 			Images::where('slide_id', $id)->delete();
 			$this->commonImage($input, $id);
