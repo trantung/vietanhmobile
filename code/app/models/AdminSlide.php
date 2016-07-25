@@ -12,6 +12,6 @@ class AdminSlide extends Eloquent
     protected $dates = ['deleted_at'];
 	public function images()
 	    {
-	        return $this->hasMany('images', 'slide_id', 'id');
+	        return $this->hasMany('Images', 'slide_id', 'id');
 	    }
 }
